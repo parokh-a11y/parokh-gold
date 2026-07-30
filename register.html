@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Register | PAROKH GOLD EA</title>
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="images/logo-header.png" type="image/png">
+<link rel="icon" href="images/logo-header.png">
 </head>
 <body class="rtl">
 <header class="header"><div class="container header-inner">
 <a href="index.html" class="logo"><img src="images/logo-header.png" alt="PAROKH GOLD EA" class="logo-img" width="34" height="34"><span>PAROKH GOLD EA</span></a>
+<nav class="nav">
+<a href="index.html#features" data-i18n="nav_features">ویژگی‌ها</a>
+<a href="index.html#guides" data-i18n="nav_guides">راهنما</a>
+<a href="index.html#pricing" data-i18n="nav_pricing">خرید</a>
+<a href="about.html" data-i18n="nav_about">درباره ما</a>
+<a href="contact.html" data-i18n="nav_contact">تماس</a>
+</nav>
 <div class="header-actions">
-<a href="login.html" class="btn btn-secondary btn-sm" data-i18n="nav_login">ورود</a>
-<button class="btn-icon" data-lang-toggle><span class="lang-label">🌐</span></button>
-<button class="btn-icon" data-theme-toggle><span class="theme-icon">☀️</span></button>
+<a href="login.html" class="btn btn-secondary btn-sm" id="nav-login-btn" data-i18n="nav_login">ورود</a>
+<a href="dashboard.html" class="btn btn-secondary btn-sm" id="nav-dash-btn" style="display:none" data-i18n="nav_dashboard">پنل کاربری</a>
+<button class="btn-icon" data-lang-toggle type="button"><span class="lang-label">🌐</span></button>
+<button class="btn-icon" data-theme-toggle type="button"><span class="theme-icon">☀️</span></button>
+<button class="hamburger" aria-label="Menu" type="button"><span></span><span></span><span></span></button>
 </div></div></header>
+<div class="mobile-nav">
+<a href="index.html" data-i18n="nav_home">خانه</a>
+<a href="index.html#features" data-i18n="nav_features">ویژگی‌ها</a>
+<a href="index.html#guides" data-i18n="nav_guides">راهنما</a>
+<a href="index.html#pricing" data-i18n="nav_pricing">خرید</a>
+<a href="about.html" data-i18n="nav_about">درباره ما</a>
+<a href="contact.html" data-i18n="nav_contact">تماس</a>
+<a href="login.html" id="m-login" data-i18n="nav_login">ورود</a>
+<a href="dashboard.html" id="m-dash" style="display:none" data-i18n="nav_dashboard">پنل کاربری</a>
+<a href="register.html" data-i18n="login_register">ثبت‌نام</a>
+</div>
 <div class="auth-page"><div class="auth-card">
-<img src="images/logo-header.png" alt="PAROKH GOLD EA" style="width:48px;height:48px;margin:0 auto 16px;display:block;border-radius:10px">
+<img src="images/logo-header.png" alt="" style="width:48px;height:48px;margin:0 auto 16px;display:block;border-radius:10px">
 <h1 data-i18n="reg_title">ثبت‌نام</h1>
 <p class="sub" data-i18n="reg_subtitle"></p>
 <form id="reg-form">
 <div class="form-field"><label data-i18n="reg_name"></label><input type="text" id="name" required autocomplete="name"></div>
 <div class="form-field"><label data-i18n="login_email"></label><input type="email" id="email" required autocomplete="email"></div>
 <div class="form-field"><label data-i18n="login_password"></label><input type="password" id="password" required minlength="6" autocomplete="new-password"></div>
-<p id="auth-msg" style="display:none;font-size:0.9rem;margin-bottom:12px"></p>
+<p id="auth-msg" style="display:none;font-size:.9rem;margin-bottom:12px"></p>
 <button type="submit" class="btn btn-primary" style="width:100%" id="reg-btn" data-i18n="reg_btn">ایجاد حساب</button>
 </form>
 <p class="auth-divider" data-i18n="login_or"></p>
@@ -32,43 +51,31 @@
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
-<script src="lang/fa.js"></script>
-<script src="lang/en.js"></script>
-<script src="js/main.js"></script>
+<script src="lang/fa.js"></script><script src="lang/en.js"></script><script src="js/main.js"></script>
 <script>
 document.getElementById("reg-form").addEventListener("submit", async function(e){
   e.preventDefault();
-  var msg = document.getElementById("auth-msg");
-  var btn = document.getElementById("reg-btn");
-  var name = document.getElementById("name").value.trim();
-  var email = document.getElementById("email").value.trim();
-  var password = document.getElementById("password").value;
-  var isFa = document.body.classList.contains("rtl");
-  msg.style.display = "none";
-  btn.disabled = true;
+  var msg=document.getElementById("auth-msg"), btn=document.getElementById("reg-btn");
+  var isFa=document.body.classList.contains("rtl");
+  msg.style.display="none"; btn.disabled=true;
   try {
-    var res = await getParokhSupabase().auth.signUp({
-      email: email,
-      password: password,
-      options: { data: { full_name: name } }
+    var res=await getParokhSupabase().auth.signUp({
+      email:document.getElementById("email").value.trim(),
+      password:document.getElementById("password").value,
+      options:{ data:{ full_name:document.getElementById("name").value.trim() } }
     });
     if(res.error) throw res.error;
-    msg.style.display = "block";
-    msg.style.color = "#4ade80";
+    msg.style.display="block"; msg.style.color="#4ade80";
     if(res.data.session){
-      msg.textContent = isFa ? "ثبت‌نام موفق — در حال ورود..." : "Registered — signing in...";
-      setTimeout(function(){ location.href = "dashboard.html"; }, 700);
+      msg.textContent=isFa?"ثبت‌نام موفق — ورود...":"Success — signing in...";
+      setTimeout(function(){ location.href="dashboard.html"; },700);
     } else {
-      msg.textContent = isFa ? "ثبت‌نام انجام شد. اگر تأیید ایمیل لازم است صندوق ورودی را چک کنید؛ وگرنه وارد شوید." : "Registered. Confirm email if required, otherwise sign in.";
-      btn.disabled = false;
+      msg.textContent=isFa?"ثبت‌نام شد. اگر تأیید ایمیل لازم است صندوق ورودی را چک کنید.":"Registered. Check email if confirmation is required.";
+      btn.disabled=false;
     }
   } catch(err) {
-    msg.style.display = "block";
-    msg.style.color = "#f87171";
-    var m = (err && err.message) ? err.message : "Error";
-    if(m.toLowerCase().indexOf("already") >= 0) m = isFa ? "این ایمیل قبلاً ثبت شده" : "Email already registered";
-    msg.textContent = m;
-    btn.disabled = false;
+    msg.style.display="block"; msg.style.color="#f87171";
+    msg.textContent=parokhAuthErrorMessage(err,isFa); btn.disabled=false;
   }
 });
 </script>

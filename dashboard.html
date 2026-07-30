@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Dashboard | PAROKH GOLD EA</title>
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="images/logo-header.png" type="image/png">
+<link rel="icon" href="images/logo-header.png">
 </head>
 <body class="rtl">
 <header class="header"><div class="container header-inner">
 <a href="index.html" class="logo"><img src="images/logo-header.png" alt="PAROKH GOLD EA" class="logo-img" width="34" height="34"><span>PAROKH GOLD EA</span></a>
+<nav class="nav">
+<a href="index.html#features" data-i18n="nav_features">ویژگی‌ها</a>
+<a href="index.html#guides" data-i18n="nav_guides">راهنما</a>
+<a href="index.html#pricing" data-i18n="nav_pricing">خرید</a>
+<a href="about.html" data-i18n="nav_about">درباره ما</a>
+<a href="contact.html" data-i18n="nav_contact">تماس</a>
+</nav>
 <div class="header-actions">
-<a href="index.html" class="btn btn-secondary btn-sm" data-i18n="nav_home">خانه</a>
-<button class="btn-icon" data-lang-toggle><span class="lang-label">🌐</span></button>
-<button class="btn-icon" data-theme-toggle><span class="theme-icon">☀️</span></button>
+<a href="login.html" class="btn btn-secondary btn-sm" id="nav-login-btn" data-i18n="nav_login">ورود</a>
+<a href="dashboard.html" class="btn btn-secondary btn-sm" id="nav-dash-btn" style="display:none" data-i18n="nav_dashboard">پنل کاربری</a>
+<button class="btn-icon" data-lang-toggle type="button"><span class="lang-label">🌐</span></button>
+<button class="btn-icon" data-theme-toggle type="button"><span class="theme-icon">☀️</span></button>
+<button class="hamburger" aria-label="Menu" type="button"><span></span><span></span><span></span></button>
 </div></div></header>
+<div class="mobile-nav">
+<a href="index.html" data-i18n="nav_home">خانه</a>
+<a href="index.html#features" data-i18n="nav_features">ویژگی‌ها</a>
+<a href="index.html#guides" data-i18n="nav_guides">راهنما</a>
+<a href="index.html#pricing" data-i18n="nav_pricing">خرید</a>
+<a href="about.html" data-i18n="nav_about">درباره ما</a>
+<a href="contact.html" data-i18n="nav_contact">تماس</a>
+<a href="login.html" id="m-login" data-i18n="nav_login">ورود</a>
+<a href="dashboard.html" id="m-dash" style="display:none" data-i18n="nav_dashboard">پنل کاربری</a>
+<a href="register.html" data-i18n="login_register">ثبت‌نام</a>
+</div>
 <div class="dash-wrap"><div class="container">
 <div class="section-header" style="text-align:start;max-width:none;margin-bottom:8px">
 <h2 data-i18n="dash_title">پنل کاربری</h2>
@@ -30,7 +49,7 @@
 <div class="dash-card">
 <h3 data-i18n="dash_license"></h3>
 <p data-i18n="dash_no_license"></p>
-<div class="license-box">—</div>
+<div class="license-box" id="license-box">—</div>
 </div>
 <div class="dash-card">
 <h3 data-i18n="dash_download_demo"></h3>
@@ -48,29 +67,28 @@
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
-<script src="lang/fa.js"></script>
-<script src="lang/en.js"></script>
-<script src="js/main.js"></script>
+<script src="lang/fa.js"></script><script src="lang/en.js"></script><script src="js/main.js"></script>
 <script>
 (async function(){
-  var session = await parokhRequireAuth();
+  var session=await parokhRequireAuth();
   if(!session) return;
-  var user = session.user;
-  var meta = user.user_metadata || {};
-  document.getElementById("user-email").textContent = user.email || "";
-  document.getElementById("user-name").textContent = meta.full_name || (user.email||"").split("@")[0];
-  document.getElementById("p-name").value = meta.full_name || "";
-  document.getElementById("save-profile").addEventListener("click", async function(){
-    var name = document.getElementById("p-name").value.trim();
-    var res = await getParokhSupabase().auth.updateUser({ data: { full_name: name } });
+  var user=session.user, meta=user.user_metadata||{};
+  document.getElementById("user-email").textContent=user.email||"";
+  document.getElementById("user-name").textContent=meta.full_name||(user.email||"").split("@")[0];
+  document.getElementById("p-name").value=meta.full_name||"";
+  var lic=localStorage.getItem("parokh_license_"+user.id);
+  if(lic) document.getElementById("license-box").textContent=lic;
+  document.getElementById("save-profile").onclick=async function(){
+    var name=document.getElementById("p-name").value.trim();
+    var res=await getParokhSupabase().auth.updateUser({ data:{ full_name:name } });
     if(res.error){ alert(res.error.message); return; }
-    document.getElementById("user-name").textContent = name;
-    alert(document.body.classList.contains("rtl") ? "ذخیره شد" : "Saved");
-  });
-  document.getElementById("logout-btn").addEventListener("click", async function(){
+    document.getElementById("user-name").textContent=name;
+    alert(document.body.classList.contains("rtl")?"ذخیره شد":"Saved");
+  };
+  document.getElementById("logout-btn").onclick=async function(){
     await getParokhSupabase().auth.signOut();
-    location.href = "index.html";
-  });
+    location.href="index.html";
+  };
 })();
 </script>
 </body></html>

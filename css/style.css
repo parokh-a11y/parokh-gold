@@ -509,3 +509,73 @@ section { padding: 96px 0; }
 .gallery-item p{padding:14px;text-align:center;color:var(--text-secondary);font-size:.9rem;}
 .showcase-item{display:flex;flex-direction:column;align-items:center;}
 .showcase-item p{min-height:2.6em;text-align:center;}
+
+/* Mobile header fix */
+@media (max-width: 960px) {
+  .nav { display: none !important; }
+  .hamburger { display: flex !important; flex-shrink: 0; }
+  .header-inner { gap: 8px; }
+  .logo span { font-size: 0.85rem; max-width: 42vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .header-actions { gap: 6px; flex-shrink: 0; }
+  .header-actions .btn-sm { padding: 8px 12px; font-size: 0.8rem; }
+  .btn-icon { width: 38px; height: 38px; flex-shrink: 0; }
+}
+@media (max-width: 420px) {
+  .header-actions .btn-sm { padding: 7px 10px; }
+  .logo span { max-width: 34vw; }
+}
+.guides-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+}
+@media (max-width: 640px) {
+  .guides-grid { grid-template-columns: 1fr !important; }
+}
+.guide-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.guide-layout img {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  position: sticky;
+  top: 90px;
+}
+@media (max-width: 800px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-layout img { position: static; }
+}
+.admin-gate, .admin-panel { max-width: 960px; margin: 0 auto; }
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.admin-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+}
+.admin-stat .num { font-size: 1.6rem; font-weight: 700; color: var(--gold); }
+.admin-stat .lbl { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.admin-table th, .admin-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 8px;
+  text-align: start;
+}
+.admin-table th { color: var(--text-muted); font-weight: 600; font-size: 0.8rem; }
+.auth-status-bar {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+.auth-status-bar.show { display: flex; }

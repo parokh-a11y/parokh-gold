@@ -148,7 +148,27 @@
     });
   }
 
+  
+  async function updateAuthHeader() {
+    try {
+      if (typeof getParokhSupabase !== "function") return;
+      const sb = getParokhSupabase();
+      if (!sb) return;
+      const { data: { session } } = await sb.auth.getSession();
+      const loginBtns = document.querySelectorAll("#nav-login-btn, #m-login");
+      const dashBtns = document.querySelectorAll("#nav-dash-btn, #m-dash");
+      if (session) {
+        loginBtns.forEach(function(el){ if(el) el.style.display = "none"; });
+        dashBtns.forEach(function(el){ if(el) el.style.display = ""; });
+      } else {
+        loginBtns.forEach(function(el){ if(el) el.style.display = ""; });
+        dashBtns.forEach(function(el){ if(el) el.style.display = "none"; });
+      }
+    } catch (e) {}
+  }
+
   function init() {
+    updateAuthHeader();
     setLanguage(detectLanguage());
     setTheme(detectTheme());
     initMobileMenu();
