@@ -20,15 +20,16 @@
 <div class="header-actions">
 <a href="login.html" class="btn btn-secondary btn-sm" id="nav-login-btn" data-i18n="nav_login">ورود</a>
 <a href="dashboard.html" class="btn btn-secondary btn-sm" id="nav-dash-btn" style="display:none" data-i18n="nav_dashboard">پنل کاربری</a>
-<button class="btn-icon" data-lang-toggle type="button"><span class="lang-label">🌐</span></button>
-<button class="btn-icon" data-theme-toggle type="button"><span class="theme-icon">☀️</span></button>
-<button class="hamburger" aria-label="Menu" type="button"><span></span><span></span><span></span></button>
+<button class="btn-icon" data-lang-toggle type="button" title="Language"><span class="lang-label">🌐</span></button>
+<button class="btn-icon" data-theme-toggle type="button" title="Theme"><span class="theme-icon">☀️</span></button>
+<button class="hamburger" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></div></header>
 <div class="mobile-nav">
 <a href="index.html" data-i18n="nav_home">خانه</a>
 <a href="index.html#features" data-i18n="nav_features">ویژگی‌ها</a>
 <a href="index.html#guides" data-i18n="nav_guides">راهنما</a>
 <a href="index.html#pricing" data-i18n="nav_pricing">خرید</a>
+<a href="gallery.html" data-i18n="gallery_title">گالری پنل</a>
 <a href="about.html" data-i18n="nav_about">درباره ما</a>
 <a href="contact.html" data-i18n="nav_contact">تماس</a>
 <a href="login.html" id="m-login" data-i18n="nav_login">ورود</a>
@@ -42,7 +43,7 @@
 </div>
 <div class="dash-grid">
 <div class="dash-card">
-<h3>پروفایل</h3>
+<h3 data-i18n="reg_name">پروفایل</h3>
 <div class="form-field"><label data-i18n="reg_name"></label><input type="text" id="p-name"></div>
 <button class="btn btn-secondary btn-sm" id="save-profile">ذخیره</button>
 </div>
@@ -67,7 +68,9 @@
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
-<script src="lang/fa.js"></script><script src="lang/en.js"></script><script src="js/main.js"></script>
+<script src="lang/fa.js"></script>
+<script src="lang/en.js"></script>
+<script src="js/main.js"></script>
 <script>
 (async function(){
   var session=await parokhRequireAuth();
