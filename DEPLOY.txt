@@ -1,0 +1,14 @@
+PAROKH GOLD EA deploy
+
+1) Upload ALL files (including functions/ folder) to GitHub via Desktop.
+2) Cloudflare must run Pages Functions:
+   - functions/api/[[path]].js  -> proxies /api/* to Supabase
+3) After deploy test:
+   https://YOUR_DOMAIN/api/auth/v1/health
+   Should NOT show the homepage. Should show JSON from Supabase (or API key message).
+4) Register page Network tab must show:
+   /api/auth/v1/signup   (same domain)
+5) Admin (private, not linked):
+   /mgmt-k9p2x7qh.html
+   Password: ParokhAdmin2026!
+6) Put images yourself in /images

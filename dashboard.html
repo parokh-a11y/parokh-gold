@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><title>Dashboard | PAROKH GOLD EA</title>
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="images/logo-header.png">
+</head><body class="rtl">
+<header class="header"><div class="container header-inner">
+<a class="logo" href="index.html"><img src="images/logo-header.png" width="32" height="32" alt="PAROKH GOLD EA"><span>PAROKH GOLD EA</span></a>
+<nav class="nav">
+<a href="index.html#features" data-i18n="nav_features"></a>
+<a href="index.html#guides" data-i18n="nav_guides"></a>
+<a href="index.html#pricing" data-i18n="nav_pricing"></a>
+<a href="about.html" data-i18n="nav_about"></a>
+<a href="contact.html" data-i18n="nav_contact"></a>
+</nav>
+<div class="header-actions">
+<a href="login.html" class="btn btn-secondary btn-sm" id="nav-login-btn" data-i18n="nav_login"></a>
+<a href="dashboard.html" class="btn btn-secondary btn-sm" id="nav-dash-btn" style="display:none" data-i18n="nav_dashboard"></a>
+<button type="button" class="btn-icon" data-lang-toggle><span class="lang-label">🌐</span></button>
+<button type="button" class="btn-icon" data-theme-toggle><span class="theme-icon">☀️</span></button>
+<button type="button" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></div></header>
+<div class="mobile-nav">
+<a href="index.html" data-i18n="nav_home"></a>
+<a href="login.html" id="m-login" data-i18n="nav_login"></a>
+<a href="dashboard.html" id="m-dash" style="display:none" data-i18n="nav_dashboard"></a>
+<a href="register.html" data-i18n="login_register"></a>
+</div>
+<div class="dash-wrap"><div class="container">
+<h2 data-i18n="dash_title"></h2>
+<p><span data-i18n="dash_welcome"></span> — <strong id="user-name">...</strong> (<span id="user-email"></span>)</p>
+<div class="dash-grid" style="margin-top:16px">
+<div class="dash-card"><h3 data-i18n="reg_name"></h3>
+<div class="form-field"><input id="p-name"></div>
+<button class="btn btn-secondary btn-sm" id="save-profile">Save</button></div>
+<div class="dash-card"><h3 data-i18n="dash_license"></h3>
+<p data-i18n="dash_no_license"></p><div class="license-box" id="license-box">—</div></div>
+<div class="dash-card"><h3 data-i18n="dash_support"></h3>
+<a class="btn btn-secondary btn-sm" href="https://t.me/parokh" target="_blank" rel="noopener">Telegram</a></div>
+<div class="dash-card"><h3 data-i18n="nav_logout"></h3>
+<button class="btn btn-secondary btn-sm" id="logout-btn" data-i18n="nav_logout"></button></div>
+</div></div></div>
+<script src="lang/fa.js"></script><script src="lang/en.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script><script src="js/main.js"></script>
+<script>
+(async function(){
+  var session = await parokhRequireAuth(); if(!session) return;
+  var u = session.user, m = u.user_metadata||{};
+  document.getElementById("user-email").textContent = u.email||"";
+  document.getElementById("user-name").textContent = m.full_name||(u.email||"").split("@")[0];
+  document.getElementById("p-name").value = m.full_name||"";
+  document.getElementById("save-profile").onclick = async function(){
+    var name = document.getElementById("p-name").value.trim();
+    var res = await getParokhSupabase().auth.updateUser({ data: { full_name: name } });
+    if(res.error) alert(res.error.message); else document.getElementById("user-name").textContent = name;
+  };
+  document.getElementById("logout-btn").onclick = async function(){
+    await getParokhSupabase().auth.signOut(); location.href="index.html";
+  };
+})();
+</script>
+</body></html>
