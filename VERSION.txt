@@ -1,4 +1,0 @@
-PAROKH GOLD EA Website
-Version: v1.2
-Date: 2026-07-31
-Changes: SEO, training hub, demo 15+15, real purchase flow, full user delete, password rules, dashboard i18n
