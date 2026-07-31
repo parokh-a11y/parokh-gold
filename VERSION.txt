@@ -1,0 +1,4 @@
+PAROKH GOLD EA Website
+Version: v1.1
+Base: stable structure (post main.js fix)
+Date: 2026-07-31

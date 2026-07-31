@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex"><title>Forgot | PAROKH GOLD EA</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo-header.png" type="image/png">
+</head>
+<body class="rtl">
+<header class="header"><div class="container header-inner">
+<a href="index.html" class="logo"><img src="images/logo-header.png" alt="PAROKH GOLD EA" class="logo-img" width="34" height="34"><span>PAROKH GOLD EA</span></a>
+<nav class="nav">
+<a href="index.html" data-i18n="nav_home">خانه</a>
+<a href="login.html" data-i18n="nav_login">ورود</a>
+</nav>
+<div class="header-actions">
+<button class="btn-icon" data-lang-toggle><span class="lang-label">🌐</span></button>
+<button class="btn-icon" data-theme-toggle><span class="theme-icon">☀️</span></button>
+</div></div></header>
+<div class="auth-page"><div class="auth-card">
+<img src="images/logo-header.png" alt="" style="width:48px;height:48px;margin:0 auto 16px;display:block;border-radius:10px">
+<h1 data-i18n="forgot_title">بازیابی رمز عبور</h1>
+<p class="sub" data-i18n="forgot_subtitle"></p>
+<form id="forgot-form">
+<div class="form-field"><label data-i18n="login_email"></label><input type="email" id="email" required></div>
+<p id="msg" style="display:none;font-size:.9rem;margin-bottom:10px;color:#4ade80"></p>
+<button type="submit" class="btn btn-primary" style="width:100%" data-i18n="forgot_btn"></button>
+</form>
+<p class="auth-divider" data-i18n="login_or"></p>
+<a href="login.html" class="btn btn-secondary" style="width:100%;display:flex" data-i18n="nav_login"></a>
+<p style="text-align:center;margin-top:16px"><a href="index.html" data-i18n="nav_home"></a></p>
+</div></div>
+<script src="lang/fa.js"></script><script src="lang/en.js"></script><script src="js/main.js"></script>
+<script>
+document.getElementById('forgot-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var email = document.getElementById('email').value.trim().toLowerCase();
+  var users = JSON.parse(localStorage.getItem('parokh_users')||'{}');
+  var isFa = document.body.classList.contains('rtl');
+  var msg = document.getElementById('msg');
+  msg.style.display = 'block';
+  if(users[email]){
+    var temp = 'PG' + Math.random().toString(36).slice(2,8).toUpperCase();
+    users[email].password = temp;
+    localStorage.setItem('parokh_users', JSON.stringify(users));
+    msg.textContent = (isFa ? (typeof fa!=='undefined' && fa.forgot_done ? fa.forgot_done : 'رمز موقت: ') : (typeof en!=='undefined' && en.forgot_done ? en.forgot_done : 'Temp password: ')) + temp;
+  } else {
+    msg.style.color = '#f87171';
+    msg.textContent = isFa ? 'حسابی با این ایمیل یافت نشد' : 'No account found for this email';
+  }
+});
+</script>
+</body></html>
