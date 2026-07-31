@@ -1,0 +1,4 @@
+PAROKH GOLD EA Website
+Version: v1.3
+Date: 2026-07-31
+Unified header/footer, gallery 10 slots, mobile responsive, no Admin links, gold support btn, clean videos
