@@ -1,0 +1,1 @@
+v1.4 REAL — Supabase Auth + proxy + gallery9 + mobile floats fixed
