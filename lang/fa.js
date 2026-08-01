@@ -197,8 +197,7 @@ const fa = {
   video_3_title: "مدیریت پوزیشن",
   video_3_desc: "TP چندمرحله‌ای، تریل و خروج",
   reg_pass_rule: "حداقل ۸ کاراکتر شامل حرف و عدد",
-  admin_deleted_note: "کاربر حذف‌شده دیگر اجازه ورود ندارد"
-
+  admin_deleted_note: "کاربر حذف‌شده دیگر اجازه ورود ندارد",
   remember_me: "مرا به خاطر بسپار",
   reset_title: "رمز جدید",
   reset_subtitle: "رمز عبور جدید خود را وارد کنید",

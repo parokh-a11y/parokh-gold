@@ -197,8 +197,7 @@ const en = {
   video_3_title: "Position management",
   video_3_desc: "Multi TP, trail and exits",
   reg_pass_rule: "Min 8 characters with letters and numbers",
-  admin_deleted_note: "Deleted users cannot sign in again"
-
+  admin_deleted_note: "Deleted users cannot sign in again",
   remember_me: "Remember me",
   reset_title: "New password",
   reset_subtitle: "Enter your new password",

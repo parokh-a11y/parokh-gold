@@ -780,3 +780,66 @@ body.rtl .pass-eye,
   font-size: 0.9rem; color: var(--text-secondary);
 }
 .remember-row input { width: auto; accent-color: var(--gold); }
+
+
+/* v1.6.1 back-top + support same row, no overlap */
+.back-top,
+#back-top {
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 20px !important;
+  right: auto !important;
+  inset-inline-start: 20px !important;
+  inset-inline-end: auto !important;
+  z-index: 970 !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: #1a1a22 !important;
+  border: 1px solid #c9a227 !important;
+  color: #c9a227 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity .25s !important;
+}
+.back-top.visible,
+.back-top.show,
+#back-top.visible,
+#back-top.show {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.support-float {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 20px !important;
+  left: auto !important;
+  inset-inline-end: 20px !important;
+  inset-inline-start: auto !important;
+  z-index: 970 !important;
+}
+html[dir="rtl"] .back-top,
+html[dir="rtl"] #back-top {
+  left: auto !important;
+  right: 20px !important;
+  inset-inline-start: auto !important;
+  inset-inline-end: 20px !important;
+}
+html[dir="rtl"] .support-float {
+  right: auto !important;
+  left: 20px !important;
+  inset-inline-end: auto !important;
+  inset-inline-start: 20px !important;
+}
+/* In RTL: back-top on right? User said opposite support.
+   Support is telegram usually bottom-right in LTR.
+   User: back-top opposite support, same level, not on footer buttons.
+   LTR: support right, back-top left
+   RTL: support left (inline-start in some designs was end), keep them on opposite corners */
+@media (max-width: 560px) {
+  .back-top, #back-top { bottom: 18px !important; width: 44px !important; height: 44px !important; }
+  .support-float { bottom: 18px !important; }
+}
