@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin | PAROKH GOLD EA</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo-header.png" type="image/png">
+<style>
+.admin-wrap{max-width:960px;margin:0 auto;padding:calc(var(--header-h,72px) + 24px) 16px 80px}
+.admin-login{max-width:400px;margin:60px auto;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px}
+.admin-login h1{font-size:1.3rem;margin-bottom:16px;text-align:center}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.stat b{display:block;font-size:1.4rem;color:var(--gold)}
+.panel{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px}
+.panel h2{font-size:1rem;margin-bottom:12px;color:var(--gold)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:8px;border-bottom:1px solid var(--border);text-align:right}
+.audit{max-height:220px;overflow:auto;font-size:.8rem;font-family:monospace;background:#0a0a0f;padding:10px;border-radius:8px;color:#9ca3af}
+.hidden{display:none!important}
+</style>
+</head>
+<body class="rtl">
+<header class="header"><div class="container header-inner">
+<a href="index.html" class="logo"><img src="images/logo-header.png" alt="" class="logo-img" width="34" height="34"><span>PAROKH GOLD EA</span></a>
+<div class="header-actions">
+<button class="btn-icon" data-lang-toggle><span class="lang-label">🌐</span></button>
+<button class="btn-icon" data-theme-toggle><span class="theme-icon">☀️</span></button>
+<a href="index.html" class="btn btn-secondary btn-sm" data-i18n="nav_home">خانه</a>
+</div></div></header>
+
+<div class="admin-wrap">
+  <div id="login-box" class="admin-login">
+    <h1>ورود مدیریت</h1>
+    <div class="form-field"><label>نام کاربری</label><input type="text" id="adm-user" autocomplete="username"></div>
+    <div class="form-field"><label>رمز عبور</label><input type="password" id="adm-pass" class="with-eye" autocomplete="current-password"></div>
+    <p id="adm-msg" style="display:none;color:#f87171;font-size:.9rem;margin-bottom:10px"></p>
+    <button class="btn btn-primary" style="width:100%" id="adm-login-btn">ورود</button>
+  </div>
+
+  <div id="panel-box" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+      <h1 style="font-size:1.25rem">پنل مدیریت</h1>
+      <div style="display:flex;gap:8px">
+        <span id="adm-who" style="font-size:.85rem;color:var(--text-secondary)"></span>
+        <button class="btn btn-secondary btn-sm" id="adm-logout">خروج</button>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><b id="c-users">0</b>کاربران</div>
+      <div class="stat"><b id="c-req">0</b>درخواست‌ها</div>
+      <div class="stat"><b id="c-lic">0</b>لایسنس‌ها</div>
+    </div>
+
+    <div class="panel">
+      <h2>کاربران ثبت‌شده</h2>
+      <table><thead><tr><th>ایمیل</th><th>نام</th><th>عملیات</th></tr></thead>
+      <tbody id="tb-users"><tr><td colspan="3">موردی نیست</td></tr></tbody></table>
+    </div>
+
+    <div class="panel">
+      <h2>درخواست لایسنس</h2>
+      <table><thead><tr><th>ایمیل</th><th>نام</th><th>عملیات</th></tr></thead>
+      <tbody id="tb-req"><tr><td colspan="3">موردی نیست</td></tr></tbody></table>
+    </div>
+
+    <div class="panel">
+      <h2>صدور لایسنس</h2>
+      <div class="form-field"><label>ایمیل</label><input type="email" id="lic-email"></div>
+      <div class="form-field"><label>نوع</label>
+        <select id="lic-type"><option value="demo">دمو</option><option value="full">کامل</option></select>
+      </div>
+      <button class="btn btn-primary" id="lic-issue">صدور لایسنس</button>
+      <p id="lic-out" style="margin-top:8px;font-size:.85rem;color:var(--gold)"></p>
+    </div>
+
+    <div class="panel">
+      <h2>لایسنس‌ها</h2>
+      <table><thead><tr><th>ایمیل</th><th>نوع</th><th>کلید</th><th>عملیات</th></tr></thead>
+      <tbody id="tb-lic"><tr><td colspan="4">موردی نیست</td></tr></tbody></table>
+    </div>
+
+    <div class="panel">
+      <h2>ادمین‌های سیستم</h2>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:8px">فقط مالک می‌تواند ادمین اضافه کند</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <input type="text" id="new-adm-user" placeholder="نام کاربری" style="flex:1;min-width:120px">
+        <input type="password" id="new-adm-pass" placeholder="رمز قوی" style="flex:1;min-width:120px">
+        <button class="btn btn-secondary btn-sm" id="add-adm">افزودن ادمین</button>
+      </div>
+      <ul id="adm-list" style="font-size:.9rem"></ul>
+    </div>
+
+    <div class="panel">
+      <h2>لاگ فعالیت ادمین (محرمانه)</h2>
+      <div class="audit" id="audit-log"></div>
+      <button class="btn btn-secondary btn-sm" style="margin-top:8px" id="clear-audit">پاک کردن لاگ</button>
+    </div>
+  </div>
+</div>
+
+<script src="lang/fa.js"></script><script src="lang/en.js"></script><script src="js/main.js"></script>
+<script>
+(function(){
+  var DEFAULT_USER = "parokh";
+  var DEFAULT_PASS = "ParokhAdmin#2026!";
+  function loadAdmins(){
+    var a = JSON.parse(localStorage.getItem("parokh_admins")||"null");
+    if(!a){ a = {}; a[DEFAULT_USER] = { pass: DEFAULT_PASS, role: "owner" }; localStorage.setItem("parokh_admins", JSON.stringify(a)); }
+    return a;
+  }
+  function log(action){
+    var logs = JSON.parse(localStorage.getItem("parokh_admin_audit")||"[]");
+    var who = sessionStorage.getItem("parokh_admin_user")||"?";
+    logs.unshift({ t: new Date().toISOString(), who: who, action: action });
+    if(logs.length>200) logs = logs.slice(0,200);
+    localStorage.setItem("parokh_admin_audit", JSON.stringify(logs));
+  }
+  function showAudit(){
+    var logs = JSON.parse(localStorage.getItem("parokh_admin_audit")||"[]");
+    document.getElementById("audit-log").textContent = logs.map(function(x){
+      return x.t + " | " + x.who + " | " + x.action;
+    }).join("\\n") || "—";
+  }
+  function genKey(type){
+    var s="ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; var o="PG-"+(type==="full"?"FULL":"DEMO")+"-";
+    for(var i=0;i<12;i++) o+=s[Math.floor(Math.random()*s.length)];
+    return o;
+  }
+  function refresh(){
+    var users = JSON.parse(localStorage.getItem("parokh_users")||"{}");
+    var reqs = JSON.parse(localStorage.getItem("parokh_license_requests")||"{}");
+    var lics = JSON.parse(localStorage.getItem("parokh_licenses")||"{}");
+    var uk = Object.keys(users), rk = Object.keys(reqs), lk = Object.keys(lics);
+    document.getElementById("c-users").textContent = uk.length;
+    document.getElementById("c-req").textContent = rk.length;
+    document.getElementById("c-lic").textContent = lk.length;
+    var tb = document.getElementById("tb-users");
+    if(!uk.length) tb.innerHTML = "<tr><td colspan=3>موردی نیست</td></tr>";
+    else tb.innerHTML = uk.map(function(e){
+      var u=users[e];
+      return "<tr><td>"+e+"</td><td>"+(u.name||"—")+"</td><td><button data-del-user=\\""+e+"\\" class=\\"btn btn-secondary btn-sm\\">حذف</button></td></tr>";
+    }).join("");
+    tb.querySelectorAll("[data-del-user]").forEach(function(b){
+      b.onclick=function(){
+        var e=b.getAttribute("data-del-user");
+        delete users[e]; localStorage.setItem("parokh_users", JSON.stringify(users));
+        var bl=JSON.parse(localStorage.getItem("parokh_blacklist")||"[]");
+        if(bl.indexOf(e)<0) bl.push(e); localStorage.setItem("parokh_blacklist", JSON.stringify(bl));
+        log("delete_user "+e); refresh();
+      };
+    });
+    var tbr = document.getElementById("tb-req");
+    if(!rk.length) tbr.innerHTML="<tr><td colspan=3>موردی نیست</td></tr>";
+    else tbr.innerHTML = rk.map(function(e){
+      var r=reqs[e];
+      return "<tr><td>"+e+"</td><td>"+(r.name||"—")+"</td><td><button data-ok-req=\\""+e+"\\" class=\\"btn btn-primary btn-sm\\">تأیید+لایسنس</button></td></tr>";
+    }).join("");
+    tbr.querySelectorAll("[data-ok-req]").forEach(function(b){
+      b.onclick=function(){
+        var e=b.getAttribute("data-ok-req");
+        var key=genKey("full");
+        lics[e]={ key:key, type:"full", at:Date.now() };
+        localStorage.setItem("parokh_licenses", JSON.stringify(lics));
+        delete reqs[e]; localStorage.setItem("parokh_license_requests", JSON.stringify(reqs));
+        log("approve_license "+e+" "+key); refresh();
+      };
+    });
+    var tbl = document.getElementById("tb-lic");
+    if(!lk.length) tbl.innerHTML="<tr><td colspan=4>موردی نیست</td></tr>";
+    else tbl.innerHTML = lk.map(function(e){
+      var L=lics[e];
+      return "<tr><td>"+e+"</td><td>"+L.type+"</td><td style=\\"font-size:.75rem\\">"+L.key+"</td><td><button data-del-lic=\\""+e+"\\" class=\\"btn btn-secondary btn-sm\\">حذف</button></td></tr>";
+    }).join("");
+    tbl.querySelectorAll("[data-del-lic]").forEach(function(b){
+      b.onclick=function(){ var e=b.getAttribute("data-del-lic"); delete lics[e]; localStorage.setItem("parokh_licenses",JSON.stringify(lics)); log("delete_license "+e); refresh(); };
+    });
+    var admins=loadAdmins();
+    document.getElementById("adm-list").innerHTML = Object.keys(admins).map(function(u){
+      return "<li>"+u+" ("+(admins[u].role||"admin")+")</li>";
+    }).join("");
+    showAudit();
+  }
+  function enter(user){
+    sessionStorage.setItem("parokh_admin_user", user);
+    sessionStorage.setItem("parokh_admin_ok", "1");
+    document.getElementById("login-box").classList.add("hidden");
+    document.getElementById("panel-box").classList.remove("hidden");
+    document.getElementById("adm-who").textContent = user;
+    log("login");
+    refresh();
+  }
+  if(sessionStorage.getItem("parokh_admin_ok")==="1"){
+    enter(sessionStorage.getItem("parokh_admin_user")||"?");
+  }
+  document.querySelectorAll("input.with-eye").forEach(function(input){
+    var wrap=document.createElement("div"); wrap.className="pass-wrap";
+    input.parentNode.insertBefore(wrap,input); wrap.appendChild(input);
+    var btn=document.createElement("button"); btn.type="button"; btn.className="pass-eye"; btn.textContent="👁";
+    btn.onclick=function(){ var s=input.type==="password"; input.type=s?"text":"password"; btn.textContent=s?"🙈":"👁"; };
+    wrap.appendChild(btn);
+  });
+  document.getElementById("adm-login-btn").onclick=function(){
+    var u=document.getElementById("adm-user").value.trim();
+    var p=document.getElementById("adm-pass").value;
+    var admins=loadAdmins();
+    var msg=document.getElementById("adm-msg");
+    if(admins[u] && admins[u].pass===p){ enter(u); }
+    else { msg.style.display="block"; msg.textContent="نام کاربری یا رمز اشتباه است"; log("failed_login "+u); }
+  };
+  document.getElementById("adm-logout").onclick=function(){
+    log("logout");
+    sessionStorage.removeItem("parokh_admin_ok");
+    sessionStorage.removeItem("parokh_admin_user");
+    location.reload();
+  };
+  document.getElementById("lic-issue").onclick=function(){
+    var e=document.getElementById("lic-email").value.trim().toLowerCase();
+    var t=document.getElementById("lic-type").value;
+    if(!e) return;
+    var lics=JSON.parse(localStorage.getItem("parokh_licenses")||"{}");
+    var key=genKey(t);
+    lics[e]={ key:key, type:t, at:Date.now() };
+    localStorage.setItem("parokh_licenses", JSON.stringify(lics));
+    document.getElementById("lic-out").textContent = key;
+    log("issue_license "+e+" "+t+" "+key);
+    refresh();
+  };
+  document.getElementById("add-adm").onclick=function(){
+    var who=sessionStorage.getItem("parokh_admin_user");
+    var admins=loadAdmins();
+    if(!admins[who] || admins[who].role!=="owner"){ alert("فقط مالک می‌تواند ادمین اضافه کند"); return; }
+    var u=document.getElementById("new-adm-user").value.trim();
+    var p=document.getElementById("new-adm-pass").value;
+    if(!u||p.length<8){ alert("نام کاربری و رمز حداقل ۸ کاراکتر"); return; }
+    admins[u]={ pass:p, role:"admin" };
+    localStorage.setItem("parokh_admins", JSON.stringify(admins));
+    log("add_admin "+u);
+    refresh();
+  };
+  document.getElementById("clear-audit").onclick=function(){
+    var who=sessionStorage.getItem("parokh_admin_user");
+    var admins=loadAdmins();
+    if(!admins[who] || admins[who].role!=="owner"){ alert("فقط مالک"); return; }
+    localStorage.setItem("parokh_admin_audit","[]");
+    showAudit();
+  };
+})();
+</script>
+</body></html>
