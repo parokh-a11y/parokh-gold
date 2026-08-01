@@ -1,0 +1,21 @@
+PAROKH GOLD EA v1.5
+
+=== Deploy (مهم) ===
+فقط با Worker، نه آپلود خام فایل:
+
+1. فایل‌ها را در پوشه پروژه Git بگذار (عکس‌ها را نگه دار)
+2. در ترمینال همان پوشه:
+
+   npx wrangler deploy
+
+3. باید ببینی: main = worker.js و Deployed ... workers.dev
+
+=== تست ===
+https://parokh-gold.parokh.workers.dev/api/auth/v1/health
+
+باید JSON باشد، نه صفحه سایت.
+اگر باز HTML دیدی → Deploy هنوز Worker نیست.
+
+=== کلید ===
+Publishable در js/supabase-client.js ست شده.
+Secret را هیچ‌جا در سایت نگذار.
