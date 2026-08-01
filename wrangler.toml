@@ -5,8 +5,5 @@ main = "worker.js"
 [assets]
 directory = "."
 binding = "ASSETS"
-# IMPORTANT: do not treat /api as SPA
-html_handling = "auto"
+html_handling = "auto-trailing-slash"
 not_found_handling = "single-page-application"
-
-# Exclude api from SPA fallback if supported by runtime
