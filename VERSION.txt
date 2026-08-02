@@ -1,0 +1,1 @@
+v1.8 — admin confirm, mobile table, permanent ban, owner-only audit, bigger logs

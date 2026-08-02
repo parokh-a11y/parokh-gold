@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://parokh-gold.parokh.workers.dev/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/contact.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/gallery.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/videos.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/guides/install.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/guides/buttons.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/guides/settings.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://parokh-gold.parokh.workers.dev/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>
