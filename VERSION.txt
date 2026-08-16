@@ -1,1 +1,0 @@
-v1.10 — image frames, float polish, delete≠ban, demo→purchase if logged in, notif bell
