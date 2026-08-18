@@ -1,0 +1,1 @@
+v1.13 — fix register login bug, social hover, auth UI, password change, telegram Parokhea, canonical parokh.ir
