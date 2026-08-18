@@ -1,0 +1,1 @@
+v1.12 — social links + Facebook, notif mobile, buy/demo routes, support ParokhGoldEA
