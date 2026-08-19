@@ -1,1 +1,0 @@
-v1.15 — full sales+demo page, index pricing sync, i18n fix, license link, remove old mgmt
