@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /forgot.html
+Disallow: /mgmt-k9p2x7qh.html
+Sitemap: https://parokh.ir/sitemap.xml
