@@ -1,1 +1,0 @@
-v1.16 — fix-only: admin i18n, purchase checkout 2-step, center plans, header login, no redesign
