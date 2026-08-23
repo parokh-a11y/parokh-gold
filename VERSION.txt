@@ -1,1 +1,0 @@
-v1.18 — checklist fixes + footer version badge + Parokhgoldea + reset domain + inputs + admin i18n
