@@ -1,0 +1,22 @@
+name = "parokh-gold"
+compatibility_date = "2026-07-31"
+main = "worker.js"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
+
+# Uncomment after: npx wrangler kv namespace create PAROKH_KV
+# [[kv_namespaces]]
+# binding = "PAROKH_KV"
+# id = "PASTE_REAL_ID_HERE"
+
+# Secrets (never commit values):
+# npx wrangler secret put ADMIN_USER
+# npx wrangler secret put ADMIN_PASS
+# npx wrangler secret put ADMIN_SECRET
+# npx wrangler secret put DATA_SECRET
+# npx wrangler secret put BAN_SECRET
+# npx wrangler secret put PAYMENT_ADDRESS_TRC20
