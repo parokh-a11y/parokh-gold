@@ -9,9 +9,9 @@ html_handling = "auto-trailing-slash"
 not_found_handling = "single-page-application"
 
 # Uncomment after: npx wrangler kv namespace create PAROKH_KV
-# [[kv_namespaces]]
-# binding = "PAROKH_KV"
-# id = "PASTE_REAL_ID_HERE"
+[[kv_namespaces]]
+binding = "PAROKH_KV"
+id = "0777f25c66814a3ebe69c21a32a17b14"
 
 # Secrets (never commit values):
 # npx wrangler secret put ADMIN_USER
