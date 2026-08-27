@@ -1,0 +1,18 @@
+name = "parokh-gold"
+compatibility_date = "2026-07-31"
+main = "worker.js"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
+
+[[kv_namespaces]]
+binding = "PAROKH_KV"
+id = "0777f25c66814a3ebe69c21a32a17b14"
+
+# Secrets (wrangler secret put):
+# ADMIN_USER ADMIN_PASS ADMIN_SECRET
+# SUPABASE_URL SUPABASE_ANON_KEY
+# PAYMENT_ADDRESS_TRC20
