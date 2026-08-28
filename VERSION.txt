@@ -1,0 +1,1 @@
+v1.24 — content pages FA/EN, unified header/footer, hamburger fix, pricing 39/119/199, fixed payment text, login Google button
