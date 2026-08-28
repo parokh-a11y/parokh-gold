@@ -1,1 +1,0 @@
-v1.23 — payment text manual/fixed only; remove parokh_session as auth source
