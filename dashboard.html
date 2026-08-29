@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Dashboard | PAROKH GOLD EA</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo-header.png" type="image/png">
+</head>
+<body class="rtl page-dashboard">
+<header class="header"><div class="container header-inner">
+<a href="index.html" class="logo"><img src="images/logo-header.png" alt="PAROKH GOLD EA" class="logo-img" width="34" height="34"><span>PAROKH GOLD EA</span></a>
+<nav class="nav">
+<a href="index.html#features" data-i18n="nav_features">Features</a>
+<a href="index.html#showcase" data-i18n="nav_showcase">Panel Preview</a>
+<a href="index.html#guides" data-i18n="nav_guides">Guides</a>
+<a href="purchase.html" data-i18n="nav_pricing">Buy</a>
+<a href="about.html" data-i18n="nav_about">About</a>
+<a href="contact.html" data-i18n="nav_contact">Contact</a>
+</nav>
+<div class="header-actions header-actions-dash" data-dash-header>
+<div class="notif-wrap notif-in-header">
+  <button type="button" class="notif-btn" id="notif-btn" aria-label="Notifications">🔔<span class="notif-badge" id="notif-badge">0</span></button>
+  <div class="notif-panel" id="notif-panel"><div class="notif-empty" id="notif-empty" data-i18n="dash_no_notif">No notifications</div></div>
+</div>
+<span class="hdr-user-chip" id="hdr-user-chip">
+  <img class="hdr-user-avatar-img" id="hdr-user-avatar" alt="" width="28" height="28" hidden>
+  <span class="hdr-user-avatar hdr-user-avatar-fallback" id="hdr-user-avatar-fb" aria-hidden="true"></span>
+  <span id="hdr-user-name">—</span>
+</span>
+<button type="button" class="btn btn-secondary btn-sm" id="logout-btn" data-i18n="nav_logout">Logout</button>
+<button type="button" class="btn-icon" data-lang-toggle aria-label="Language"><span class="lang-label">🌐</span></button>
+<button type="button" class="btn-icon" data-theme-toggle aria-label="Theme"><span class="theme-icon">☀️</span></button>
+<button type="button" class="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></div></header>
+<div class="mobile-nav">
+<a href="index.html#features" data-i18n="nav_features">Features</a>
+<a href="index.html#showcase" data-i18n="nav_showcase">Panel Preview</a>
+<a href="index.html#guides" data-i18n="nav_guides">Guides</a>
+<a href="purchase.html" data-i18n="nav_pricing">Buy</a>
+<a href="about.html" data-i18n="nav_about">About</a>
+<a href="contact.html" data-i18n="nav_contact">Contact</a>
+<a href="dashboard.html">Dashboard</a>
+<button type="button" class="btn btn-secondary btn-sm" id="logout-btn-m" style="margin:12px 16px">Logout</button>
+</div>
+
+<main class="dash-shell dash-v2">
+<div class="container">
+
+  <div class="dash-top">
+    <div>
+      <h1 class="dash-h1"><span class="dash-h1-icon" aria-hidden="true"></span> <span data-i18n="dash_title">Dashboard</span></h1>
+      <p class="dash-welcome"><span data-i18n="dash_welcome">Welcome</span>, <strong id="user-name">—</strong></p>
+      <p class="dash-email" id="user-email"></p>
+    </div>
+    <div class="dash-top-actions">
+      <div class="dash-stat-pill"><span id="stat-orders">0</span> <small data-i18n="dash_orders">Orders</small></div>
+    </div>
+  </div>
+
+  <div class="dash-tabs" role="tablist">
+    <button type="button" class="dash-tab active" data-tab="overview" role="tab" aria-selected="true" data-i18n="dash_tab_overview">Overview</button>
+    <button type="button" class="dash-tab" data-tab="downloads" role="tab" data-i18n="dash_tab_downloads">Downloads</button>
+    <button type="button" class="dash-tab" data-tab="licenses" role="tab" data-i18n="dash_tab_licenses">Licenses</button>
+    <button type="button" class="dash-tab" data-tab="orders" role="tab" data-i18n="dash_tab_orders">Orders</button>
+    <button type="button" class="dash-tab" data-tab="account" role="tab" data-i18n="dash_tab_account">Account</button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="dash-panel active" id="panel-overview">
+    <div class="dash-grid-2">
+      <div class="dash-card">
+        <h3 data-i18n="dash_how_activate">How to activate</h3>
+        <ol class="dash-steps">
+          <li data-i18n="dash_step_1">Choose a plan and complete purchase</li>
+          <li data-i18n="dash_step_2">Send MT5 account details after payment</li>
+          <li data-i18n="dash_step_3">Receive your licensed file (offline delivery)</li>
+          <li data-i18n="dash_step_4">Install on MetaTrader 5 and start</li>
+        </ol>
+        <div class="dash-inline-actions">
+          <a href="purchase.html" class="btn btn-primary btn-sm" data-i18n="dash_buy_now">Buy</a>
+          <a href="guides.html" class="btn btn-secondary btn-sm" data-i18n="dash_install_guide">Installation guide</a>
+        </div>
+      </div>
+      <div class="dash-card">
+        <h3 data-i18n="dash_license_status">License status</h3>
+        <p id="license-status" data-i18n="dash_no_license">No active license yet</p>
+        <div class="license-box" id="license-box">—</div>
+        <p class="dash-hint" data-i18n="dash_license_hint">After order approval, your licensed EX5 is prepared manually.</p>
+        <button type="button" class="btn btn-primary btn-sm" id="req-license" data-i18n="dash_request_license">Request license</button>
+        <p id="req-msg" class="dash-msg" style="display:none"></p>
+      </div>
+    </div>
+    <div class="dash-card" style="margin-top:20px">
+      <h3 data-i18n="dash_quick">Quick actions</h3>
+      <div class="dash-inline-actions">
+        <a href="purchase.html" class="btn btn-primary btn-sm" data-i18n="plan_buy">Purchase</a>
+        <a href="purchase.html#demo" class="btn btn-secondary btn-sm" data-i18n="plan_demo_btn">Demo request</a>
+        <a href="https://t.me/Parokhgoldea" class="btn btn-secondary btn-sm" target="_blank" rel="noopener" data-i18n="dash_support">Support</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS -->
+  <section class="dash-panel" id="panel-downloads">
+    <div class="dash-card">
+      <h3 data-i18n="dash_download_full">Full version</h3>
+      <p data-i18n="dash_full_version">Full files are delivered after payment verification (offline). No public download link.</p>
+      <div class="dash-empty" id="downloads-empty" data-i18n="dash_no_downloads">No files available yet</div>
+      <div id="downloads-list"></div>
+      <a href="purchase.html" class="btn btn-primary btn-sm" style="margin-top:12px" data-i18n="dash_buy_now">Buy</a>
+    </div>
+    <div class="dash-card" style="margin-top:16px">
+      <h3 data-i18n="dash_download_demo">Demo</h3>
+      <p data-i18n="dash_after_disclaimer">Demo is provided under product terms after request.</p>
+      <a href="purchase.html#demo" class="btn btn-secondary btn-sm" data-i18n="plan_demo_btn">Request demo</a>
+    </div>
+  </section>
+
+  <!-- LICENSES -->
+  <section class="dash-panel" id="panel-licenses">
+    <div class="dash-card">
+      <h3 data-i18n="dash_license">Licenses</h3>
+      <p data-i18n="dash_license_one">One license = one MetaTrader 5 account.</p>
+      <p id="license-status-2" data-i18n="dash_no_license">No active license yet</p>
+      <button type="button" class="btn btn-primary btn-sm" id="req-license-2" data-i18n="dash_request_license">Request license</button>
+      <p id="req-msg-2" class="dash-msg" style="display:none"></p>
+    </div>
+  </section>
+
+  <!-- ORDERS -->
+  <section class="dash-panel" id="panel-orders">
+    <div class="dash-card">
+      <h3 data-i18n="dash_orders">Orders</h3>
+      <div class="dash-empty" id="orders-empty" data-i18n="dash_no_orders">No orders yet</div>
+      <div class="dash-table-wrap"><table class="dash-table" id="orders-table" style="display:none">
+        <thead><tr>
+          <th data-i18n="dash_col_id">Order</th>
+          <th data-i18n="dash_col_plan">Plan</th>
+          <th data-i18n="dash_col_amount">Amount</th>
+          <th data-i18n="dash_col_status">Status</th>
+        </tr></thead>
+        <tbody id="orders-body"></tbody>
+      </table></div>
+      <a href="purchase.html" class="btn btn-primary btn-sm" style="margin-top:14px" data-i18n="dash_buy_now">Buy</a>
+    </div>
+  </section>
+
+  <!-- ACCOUNT -->
+  <section class="dash-panel" id="panel-account">
+    <div class="dash-grid-2">
+      <div class="dash-card">
+        <h3 data-i18n="dash_profile">Profile</h3>
+        <form id="profile-form">
+          <div class="form-field"><label data-i18n="dash_name">Name</label><input type="text" id="p-name" autocomplete="name"></div>
+          <div class="form-field"><label data-i18n="login_email">Email</label><input type="email" id="p-email" readonly></div>
+          <button type="submit" class="btn btn-secondary btn-sm" data-i18n="dash_save_profile">Save</button>
+        </form>
+      </div>
+      <div class="dash-card">
+        <h3 data-i18n="dash_change_pass">Change password</h3>
+        <div class="form-field"><label data-i18n="dash_pass_new">New password</label><input type="password" id="u-pass-new" class="with-eye" autocomplete="new-password"></div>
+        <div class="form-field"><label data-i18n="dash_pass_confirm">Confirm password</label><input type="password" id="u-pass-new2" class="with-eye" autocomplete="new-password"></div>
+        <button type="button" class="btn btn-secondary btn-sm" id="u-pass-save" data-i18n="dash_pass_save">Save password</button>
+        <p id="u-pass-msg" class="dash-msg" style="display:none"></p>
+        <p class="dash-hint" data-i18n="dash_pass_google_hint">Google-only accounts may manage password via Google account settings.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="dash-version">Version: v1.27.2</p>
+</div>
+</main>
+
+<footer class="footer"><div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><img src="images/logo-header.png" alt="" width="36" height="36"><strong>PAROKH GOLD</strong><p data-i18n="footer_tag">Professional Gold Trading Assistant for MetaTrader 5</p></div>
+<div><h4 data-i18n="footer_product">Product</h4><ul>
+<li><a href="purchase.html" data-i18n="nav_pricing">Buy</a></li>
+<li><a href="guides.html" data-i18n="nav_guides">Guides</a></li>
+<li><a href="videos.html" data-i18n="nav_videos">Videos</a></li>
+</ul></div>
+<div><h4 data-i18n="footer_support">Support</h4><ul>
+<li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+<li><a href="https://t.me/Parokhgoldea" target="_blank" rel="noopener">Telegram</a></li>
+</ul></div>
+<div><h4 data-i18n="footer_legal">Legal</h4><ul>
+<li><a href="terms.html" data-i18n="nav_terms">Terms</a></li>
+<li><a href="privacy.html" data-i18n="nav_privacy">Privacy</a></li>
+<li><a href="license.html" data-i18n="nav_license">License</a></li>
+</ul></div>
+</div>
+<div class="footer-bottom"><span>© PAROKH GOLD</span><span>Version: v1.27.2</span></div>
+</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="lang/fa.js"></script><script src="lang/en.js"></script>
+<script src="js/main.js"></script>
+<script>
+(async function () {
+  function isFa() {
+    return document.body.classList.contains("rtl") || document.documentElement.lang === "fa";
+  }
+  async function userAuthHeaders() {
+    var h = { "Content-Type": "application/json" };
+    try {
+      if (window.parokhAuth && parokhAuth.session) {
+        var s = await parokhAuth.session();
+        if (s && s.access_token) h["Authorization"] = "Bearer " + s.access_token;
+      }
+    } catch (e) {}
+    return h;
+  }
+  async function hardLogout(goTo) {
+    try {
+      if (window.parokhAuth && parokhAuth.signOut) await parokhAuth.signOut();
+    } catch (e) {}
+    try {
+      var keys = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (!k) continue;
+        if (k.indexOf("sb-") === 0 || k.toLowerCase().indexOf("supabase") !== -1 ||
+            k === "parokh_session" || k === "parokh_users") keys.push(k);
+      }
+      keys.forEach(function (k) { localStorage.removeItem(k); });
+      sessionStorage.clear();
+    } catch (e2) {}
+    try { window.__parokhUser = null; } catch (e3) {}
+    location.href = goTo || "login.html";
+  }
+
+  function bindLogout(id) {
+    var b = document.getElementById(id);
+    if (!b) return;
+    b.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      b.disabled = true;
+      hardLogout("login.html");
+    });
+  }
+  bindLogout("logout-btn");
+  bindLogout("logout-btn-m");
+
+  // tabs
+  document.querySelectorAll(".dash-tab").forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      var id = tab.getAttribute("data-tab");
+      document.querySelectorAll(".dash-tab").forEach(function (t) {
+        t.classList.toggle("active", t === tab);
+        t.setAttribute("aria-selected", t === tab ? "true" : "false");
+      });
+      document.querySelectorAll(".dash-panel").forEach(function (p) {
+        p.classList.toggle("active", p.id === "panel-" + id);
+      });
+    });
+  });
+
+  // notif panel toggle
+  var nb = document.getElementById("notif-btn");
+  var np = document.getElementById("notif-panel");
+  if (nb && np) {
+    nb.addEventListener("click", function (e) {
+      e.stopPropagation();
+      np.classList.toggle("open");
+    });
+    document.addEventListener("click", function () { np.classList.remove("open"); });
+  }
+
+  var session = null;
+  try {
+    if (window.parokhAuth && parokhAuth.session) session = await parokhAuth.session();
+  } catch (e) {}
+  var email = session && session.user && session.user.email ? session.user.email : "";
+  if (!email) { location.href = "login.html"; return; }
+
+  try {
+    var st = await fetch("/api/me/status", { headers: await userAuthHeaders() });
+    if (st.ok) {
+      var sj = await st.json();
+      if (sj && sj.banned) { await hardLogout("login.html"); return; }
+    }
+  } catch (eBan) {}
+
+  var meta = (session.user && session.user.user_metadata) || {};
+  var name = meta.name || email.split("@")[0];
+  var elName = document.getElementById("user-name");
+  var elEmail = document.getElementById("user-email");
+  var hdrName = document.getElementById("hdr-user-name");
+  if (elName) elName.textContent = name;
+  if (elEmail) elEmail.textContent = email;
+  if (hdrName) hdrName.textContent = name;
+
+  // Avatar from Google / metadata
+  var pic = (meta && (meta.avatar_url || meta.picture || meta.avatar)) || "";
+  var imgA = document.getElementById("hdr-user-avatar");
+  var fbA = document.getElementById("hdr-user-avatar-fb");
+  if (pic && imgA) {
+    imgA.src = pic;
+    imgA.hidden = false;
+    imgA.onerror = function () { imgA.hidden = true; if (fbA) fbA.style.display = ""; };
+    if (fbA) fbA.style.display = "none";
+  } else if (fbA) {
+    var ini = (name || email || "?").trim().charAt(0).toUpperCase();
+    fbA.textContent = ini;
+    fbA.style.display = "";
+    if (imgA) imgA.hidden = true;
+  }
+
+  var pn = document.getElementById("p-name");
+  var pe = document.getElementById("p-email");
+  if (pn) pn.value = name;
+  if (pe) pe.value = email;
+
+  document.getElementById("profile-form") && document.getElementById("profile-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var n = (document.getElementById("p-name").value || "").trim();
+    if (elName) elName.textContent = n || name;
+    if (hdrName) hdrName.textContent = n || name;
+  });
+
+  async function requestLicense(msgId) {
+    var msg = document.getElementById(msgId);
+    try {
+      await fetch("/api/license-requests", {
+        method: "POST",
+        headers: await userAuthHeaders(),
+        body: JSON.stringify({ name: name, email: email })
+      });
+      if (msg) {
+        msg.style.display = "block";
+        msg.style.color = "#4ade80";
+        msg.textContent = isFa() ? "درخواست ثبت شد" : "Request submitted";
+      }
+    } catch (err) {
+      if (msg) {
+        msg.style.display = "block";
+        msg.style.color = "#f87171";
+        msg.textContent = "Error";
+      }
+    }
+  }
+  document.getElementById("req-license") && document.getElementById("req-license").addEventListener("click", function () { requestLicense("req-msg"); });
+  document.getElementById("req-license-2") && document.getElementById("req-license-2").addEventListener("click", function () { requestLicense("req-msg-2"); });
+
+  // notifications
+  try {
+    var nr = await fetch("/api/notifications", { headers: await userAuthHeaders() });
+    var nd = await nr.json();
+    var items = (nd && nd.items) || [];
+    var badge = document.getElementById("notif-badge");
+    var panel = document.getElementById("notif-panel");
+    var empty = document.getElementById("notif-empty");
+    var unread = items.filter(function (x) { return !x.read; }).length;
+    if (badge) {
+      badge.textContent = String(unread);
+      if (unread > 0) badge.classList.add("show");
+    }
+    if (panel && items.length) {
+      if (empty) empty.style.display = "none";
+      items.slice(0, 20).forEach(function (it) {
+        var d = document.createElement("div");
+        d.className = "notif-item";
+        d.textContent = it.text || it.title || "";
+        panel.appendChild(d);
+      });
+    }
+  } catch (eN) {}
+
+  // orders
+  try {
+    var orr = await fetch("/api/orders", { headers: await userAuthHeaders() });
+    var od = await orr.json();
+    var list = (od && (od.items || od.orders)) || [];
+    if (!Array.isArray(list)) list = [];
+    var stat = document.getElementById("stat-orders");
+    if (stat) stat.textContent = String(list.length);
+    if (list.length) {
+      var emptyO = document.getElementById("orders-empty");
+      var table = document.getElementById("orders-table");
+      var body = document.getElementById("orders-body");
+      if (emptyO) emptyO.style.display = "none";
+      if (table) table.style.display = "table";
+      list.forEach(function (o) {
+        var tr = document.createElement("tr");
+        var id = o.id || o.orderId || "—";
+        var plan = o.plan || o.planId || "—";
+        var amount = o.amount != null ? ("$" + o.amount) : (o.price != null ? ("$" + o.price) : "—");
+        var status = o.status || o.paymentStatus || "—";
+        tr.innerHTML = "<td>" + id + "</td><td>" + plan + "</td><td>" + amount + "</td><td>" + status + "</td>";
+        if (body) body.appendChild(tr);
+      });
+    }
+  } catch (eO) {}
+
+  // inactivity 5 min
+  var last = Date.now();
+  ["click", "keydown", "mousemove", "touchstart"].forEach(function (ev) {
+    document.addEventListener(ev, function () { last = Date.now(); }, { passive: true });
+  });
+  setInterval(function () {
+    if (Date.now() - last > 5 * 60 * 1000) hardLogout("login.html");
+  }, 15000);
+
+  // password eyes + save
+  document.querySelectorAll("input.with-eye").forEach(function (input) {
+    if (input.dataset.eyeBound) return;
+    input.dataset.eyeBound = "1";
+    var wrap = document.createElement("div");
+    wrap.className = "pass-wrap";
+    input.parentNode.insertBefore(wrap, input);
+    wrap.appendChild(input);
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "pass-eye";
+    btn.textContent = "👁";
+    btn.onclick = function () {
+      var s = input.type === "password";
+      input.type = s ? "text" : "password";
+      btn.textContent = s ? "🙈" : "👁";
+    };
+    wrap.appendChild(btn);
+  });
+  var passSave = document.getElementById("u-pass-save");
+  if (passSave) {
+    passSave.addEventListener("click", async function () {
+      var n = (document.getElementById("u-pass-new") || {}).value || "";
+      var c = (document.getElementById("u-pass-new2") || {}).value || "";
+      var msg = document.getElementById("u-pass-msg");
+      try {
+        if (n.length < 8) throw new Error(isFa() ? "رمز حداقل ۸ کاراکتر" : "Min 8 chars");
+        if (n !== c) throw new Error(isFa() ? "تکرار رمز یکسان نیست" : "Passwords differ");
+        if (!window.parokhAuth || !parokhAuth.updatePassword) throw new Error("no_auth");
+        await parokhAuth.updatePassword(n);
+        if (msg) {
+          msg.style.display = "block";
+          msg.style.color = "#4ade80";
+          msg.textContent = isFa() ? "رمز به‌روز شد" : "Password updated";
+        }
+      } catch (err) {
+        if (msg) {
+          msg.style.display = "block";
+          msg.style.color = "#f87171";
+          msg.textContent = (err && err.message) || "Error";
+        }
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

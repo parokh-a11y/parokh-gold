@@ -1,0 +1,1 @@
+v1.27.2 — dashboard header: Google avatar, no login btn, notif in header, 1024 fix
