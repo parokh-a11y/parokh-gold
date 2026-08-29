@@ -1,0 +1,1 @@
+v1.25 — Google login via getParokhSupabase; fixed payment texts; session cleanup; remember-me email only; ban self-check; pricing 39/119/199
