@@ -1,1 +1,0 @@
-v1.26 — Google OAuth uses real Supabase URL (fixes bad_oauth_state); redirect dashboard
