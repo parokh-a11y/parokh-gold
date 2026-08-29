@@ -1,9 +1,0 @@
-v1.12
-- Footer social: Telegram, Instagram, YouTube, X, Facebook (correct URLs)
-- Support float: https://t.me/Parokhgoldea
-- No parokh.ir in footer
-- Mobile notification panel stays on screen
-- Demo/buy links prefer purchase.html
-- Gallery crop overrides reinforced
-
-Deploy: GitHub Desktop Commit + Push (as usual)
