@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" id="admin-html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin | PAROKH GOLD EA</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo-header.png" type="image/png">
+<style>
+#login-box input, input { color: #f4f4f5 !important; -webkit-text-fill-color: #f4f4f5 !important; opacity:1 !important; }
+[data-theme="light"] input { color:#111 !important; -webkit-text-fill-color:#111 !important; }
+
+.admin-wrap{max-width:980px;margin:0 auto;padding:calc(var(--header-h,72px) + 20px) 12px 100px}
+.admin-login{max-width:400px;margin:48px auto;background:#12121a;border:1px solid #2a2a35;border-radius:16px;padding:28px}
+.admin-login h1{font-size:1.25rem;margin-bottom:18px;text-align:center;color:#FFD700}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.stat{background:#12121a;border:1px solid #2a2a35;border-radius:12px;padding:14px;text-align:center}
+.stat b{display:block;font-size:1.35rem;color:#FFD700}
+.panel{background:#12121a;border:1px solid #2a2a35;border-radius:12px;padding:14px;margin-bottom:14px}
+.panel h2{font-size:.98rem;margin-bottom:12px;color:#FFD700}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:480px}
+th,td{padding:10px 8px;border-bottom:1px solid #2a2a35;text-align:right;vertical-align:middle}
+.actions{display:flex;flex-wrap:wrap;gap:6px}
+.hidden{display:none!important}
+.form-field{margin-bottom:14px}
+.form-field label{display:block;margin-bottom:6px;font-size:.9rem}
+.form-field input,.form-field select,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #2a2a35;background:#0a0a0f;color:inherit;box-sizing:border-box}
+.audit{max-height:280px;overflow:auto;font-size:.78rem;font-family:ui-monospace,monospace;background:#0a0a0f;padding:10px;border-radius:8px;color:#9ca3af;white-space:pre-wrap}
+.ban-list li{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #2a2a35;font-size:.88rem}
+@media(max-width:640px){.actions{flex-direction:column}.actions .btn{width:100%}}
+</style>
+</head>
+<body class="rtl">
+<header class="header"><div class="container header-inner">
+<a href="index.html" class="logo"><img src="images/logo-header.png" alt="" class="logo-img" width="34" height="34"><span>PAROKH GOLD EA</span></a>
+<div class="header-actions">
+<button type="button" class="btn-icon" data-lang-toggle><span class="lang-label">🌐</span></button>
+<button type="button" class="btn-icon" data-theme-toggle><span class="theme-icon">☀️</span></button>
+<a href="index.html" class="btn btn-secondary btn-sm">خانه</a>
+</div></div></header>
+
+<div class="admin-wrap">
+  <div id="login-box" class="admin-login">
+    <h1>ورود مدیریت</h1>
+    <div class="form-field"><label>نام کاربری</label><input type="text" id="adm-user" autocomplete="username"></div>
+    <div class="form-field"><label>رمز عبور</label><input type="password" id="adm-pass" class="with-eye" autocomplete="current-password"></div>
+    <p id="adm-msg" style="display:none;color:#f87171;font-size:.9rem;margin-bottom:10px"></p>
+    <p style="font-size:.75rem;opacity:.55;margin-top:8px;text-align:center">در صورت فراموشی رمز با مالک سایت تماس بگیرید.</p>
+    <button type="button" class="btn btn-primary" style="width:100%" id="adm-login-btn">ورود</button>
+  </div>
+
+  <div id="panel-box" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+      <h1 style="font-size:1.2rem">پنل مدیریت</h1>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span id="adm-who" style="font-size:.85rem;opacity:.8"></span>
+        <button type="button" class="btn btn-secondary btn-sm" id="adm-logout">خروج</button>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><b id="c-users">0</b>کاربران</div>
+      <div class="stat"><b id="c-ord">0</b>سفارش‌ها</div>
+      <div class="stat"><b id="c-lic">0</b>لایسنس‌ها</div>
+    </div>
+
+    <div class="panel">
+      <h2>سفارش‌های جدید (از سرور)</h2>
+      <div class="table-wrap">
+      <table><thead><tr><th>شماره</th><th>زمان</th><th>ایمیل</th><th>بروکر</th><th>حساب</th><th>نوع</th></tr></thead>
+      <tbody id="tb-ord"><tr><td colspan="6">در حال بارگذاری...</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>درخواست لایسنس کاربران</h2>
+      <div class="table-wrap">
+      <table><thead><tr><th>زمان</th><th>ایمیل</th><th>نام</th><th>وضعیت</th></tr></thead>
+      <tbody id="tb-licreq"><tr><td colspan="4">—</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>کاربران محلی</h2>
+      <div class="table-wrap">
+      <table><thead><tr><th>ایمیل</th><th>نام</th><th>عملیات</th></tr></thead>
+      <tbody id="tb-users"><tr><td colspan="3">موردی نیست</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>ارسال اعلان به کاربر</h2>
+      <div class="form-field"><label>ایمیل کاربر</label><input type="email" id="n-email"></div>
+      <div class="form-field"><label>متن اعلان</label><textarea id="n-text" rows="3"></textarea></div>
+      <button type="button" class="btn btn-primary btn-sm" id="n-send">ارسال اعلان</button>
+    </div>
+
+    <div class="panel">
+      <h2>صدور لایسنس</h2>
+      <div class="form-field"><label>ایمیل</label><input type="email" id="lic-email"></div>
+      <div class="form-field"><label>نوع</label>
+        <select id="lic-type"><option value="demo">دمو</option><option value="full">کامل</option></select>
+      </div>
+      <button type="button" class="btn btn-primary" id="lic-issue">صدور لایسنس</button>
+      <p id="lic-out" style="margin-top:8px;font-size:.85rem;color:#FFD700"></p>
+    </div>
+
+    <div class="panel">
+      <h2>لایسنس‌ها</h2>
+      <div class="table-wrap">
+      <table><thead><tr><th>ایمیل</th><th>نوع</th><th>کلید</th><th>عملیات</th></tr></thead>
+      <tbody id="tb-lic"><tr><td colspan="4">موردی نیست</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>مسدودشدگان دائمی</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        <input type="email" id="ban-email" placeholder="email@example.com" style="flex:1;min-width:160px;padding:10px;border-radius:10px;border:1px solid #2a2a35;background:#0a0a0f;color:inherit">
+        <button type="button" class="btn btn-secondary btn-sm" id="ban-add">مسدود کردن</button>
+      </div>
+      <ul class="ban-list" id="ban-list"></ul>
+    </div>
+
+    <div class="panel">
+      <h2>تغییر رمز خودم</h2>
+      <div class="form-field"><label>رمز فعلی</label><input type="password" id="cp-old" class="with-eye"></div>
+      <div class="form-field"><label>رمز جدید</label><input type="password" id="cp-new" class="with-eye"></div>
+      <div class="form-field"><label>تکرار رمز جدید</label><input type="password" id="cp-new2" class="with-eye"></div>
+      <button type="button" class="btn btn-secondary btn-sm" id="cp-btn">ذخیره رمز</button>
+    </div>
+
+    
+    <div class="panel">
+      <h2>تغییر رمز کاربر</h2>
+      <p style="font-size:.85rem;opacity:.75;margin-bottom:10px">برای کاربرانی که با Supabase ثبت‌نام کرده‌اند، از پنل Authentication سوپا هم می‌توان رمز را Reset کرد. اینجا فقط یادداشت محلی ذخیره می‌شود مگر اینکه کاربر آنلاین باشد.</p>
+      <div class="form-field"><label>ایمیل کاربر</label><input type="email" id="up-email"></div>
+      <div class="form-field"><label>رمز موقت جدید</label><input type="password" id="up-pass" class="with-eye"></div>
+      <button type="button" class="btn btn-secondary btn-sm" id="up-save">ثبت یادداشت رمز / اطلاع</button>
+      <p id="up-msg" style="font-size:.85rem;margin-top:8px;display:none"></p>
+    </div>
+
+    <div class="panel" id="adm-manage-panel">
+      <h2>مدیریت ادمین‌ها (فقط مالک)</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <input type="text" id="new-adm-user" placeholder="نام کاربری" style="flex:1;min-width:100px;padding:10px;border-radius:10px;border:1px solid #2a2a35;background:#0a0a0f;color:inherit">
+        <input type="password" id="new-adm-pass" class="with-eye" placeholder="رمز" style="flex:1;min-width:100px;padding:10px;border-radius:10px;border:1px solid #2a2a35;background:#0a0a0f;color:inherit">
+        <button type="button" class="btn btn-secondary btn-sm" id="add-adm">افزودن</button>
+      </div>
+      <div class="table-wrap">
+      <table><thead><tr><th>کاربر</th><th>نقش</th><th>عملیات</th></tr></thead>
+      <tbody id="tb-adms"></tbody></table>
+      </div>
+    </div>
+
+    <div class="panel" id="audit-panel">
+      <h2>لاگ ادمین (فقط مالک)</h2>
+      <div class="audit" id="audit-log"></div>
+      <button type="button" class="btn btn-secondary btn-sm" style="margin-top:8px" id="clear-audit">پاک کردن لاگ</button>
+    </div>
+  </div>
+</div>
+
+<script src="lang/fa.js"></script><script src="lang/en.js"></script><script src="js/main.js"></script>
+<script>
+(function(){
+  var LOG_MAX = 5000;
+  function token(){ return sessionStorage.getItem("parokh_admin_token") || ""; }
+  function adminUser(){ return sessionStorage.getItem("parokh_admin_user") || ""; }
+  function authHeaders(){
+    var t = token();
+    return {
+      "Content-Type": "application/json",
+      "x-parokh-admin": t,
+      "Authorization": "Bearer " + t
+    };
+  }
+  function log(action){
+    var logs = [];
+    try { logs = JSON.parse(sessionStorage.getItem("parokh_admin_audit") || "[]"); } catch(e){}
+    logs.unshift({ t: new Date().toISOString(), who: adminUser() || "?", action: action });
+    if (logs.length > LOG_MAX) logs = logs.slice(0, LOG_MAX);
+    sessionStorage.setItem("parokh_admin_audit", JSON.stringify(logs));
+  }
+  async function api(path, opts){
+    opts = opts || {};
+    opts.headers = Object.assign(authHeaders(), opts.headers || {});
+    var res = await fetch(path, opts);
+    var data = {};
+    try { data = await res.json(); } catch(e){}
+    if ((res.status === 401 || res.status === 403) && path.indexOf("/api/admin/login") < 0) {
+      sessionStorage.removeItem("parokh_admin_token");
+      sessionStorage.removeItem("parokh_admin_user");
+      showLogin();
+    }
+    return { res: res, data: data };
+  }
+  function showLogin(){
+    var lb = document.getElementById("login-box");
+    var pb = document.getElementById("panel-box") || document.getElementById("adm-panel");
+    if (lb) lb.style.display = "";
+    if (pb) pb.style.display = "none";
+  }
+  function showPanel(){
+    var lb = document.getElementById("login-box");
+    var pb = document.getElementById("panel-box") || document.getElementById("adm-panel");
+    if (lb) lb.style.display = "none";
+    if (pb) pb.style.display = "";
+  }
+  async function doLogin(){
+    var u = (document.getElementById("adm-user") || {}).value || "";
+    var p = (document.getElementById("adm-pass") || {}).value || "";
+    var msg = document.getElementById("login-msg");
+    if (msg) { msg.style.display="block"; msg.style.color="#f87171"; }
+    try {
+      var r = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user: u.trim(), pass: p })
+      });
+      var data = await r.json();
+      if (!r.ok || !data.token) {
+        if (msg) msg.textContent = (data && data.error === "admin_not_configured")
+          ? "Set ADMIN_PASS + ADMIN_SECRET on Cloudflare"
+          : (document.body.classList.contains("rtl") ? "نام کاربری یا رمز اشتباه است" : "Invalid credentials");
+        return;
+      }
+      sessionStorage.setItem("parokh_admin_token", data.token);
+      sessionStorage.setItem("parokh_admin_user", data.user || u.trim());
+      log("login");
+      showPanel();
+      refresh();
+    } catch (e) {
+      if (msg) msg.textContent = "Network error";
+    }
+  }
+  function logout(){
+    log("logout");
+    sessionStorage.removeItem("parokh_admin_token");
+    sessionStorage.removeItem("parokh_admin_user");
+    showLogin();
+  }
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];}); }
+  async function refresh(){
+    if (!token()) { showLogin(); return; }
+    var ping = await api("/api/admin/ping");
+    if (!ping.res.ok) { showLogin(); return; }
+    var storageHint = document.getElementById("storage-hint");
+    if (storageHint) storageHint.textContent = "Storage: " + (ping.data.storage || "?");
+
+    var ord = await api("/api/orders");
+    var orders = (ord.data && ord.data.orders) || [];
+    var ot = document.getElementById("orders-body");
+    if (ot) {
+      ot.innerHTML = "";
+      if (!orders.length) ot.innerHTML = "<tr><td colspan='6'>—</td></tr>";
+      else orders.slice(0, 50).forEach(function(o){
+        var tr = document.createElement("tr");
+        tr.innerHTML = "<td>"+esc(o.id)+"</td><td>"+esc(o.createdAt||"")+"</td><td>"+esc(o.email)+"</td><td>"+esc(o.broker)+"</td><td>"+esc(o.account)+"</td><td>"+esc(o.plan)+" /$"+esc(String(o.price))+"</td>";
+        ot.appendChild(tr);
+      });
+    }
+    var cOrders = document.getElementById("c-orders");
+    if (cOrders) cOrders.textContent = String(orders.length);
+
+    var lr = await api("/api/license-requests");
+    var reqs = (lr.data && lr.data.requests) || [];
+    var lt = document.getElementById("licreq-body");
+    if (lt) {
+      lt.innerHTML = "";
+      if (!reqs.length) lt.innerHTML = "<tr><td colspan='4'>—</td></tr>";
+      else reqs.slice(0,40).forEach(function(r){
+        var tr=document.createElement("tr");
+        tr.innerHTML="<td>"+esc(r.at)+"</td><td>"+esc(r.email)+"</td><td>"+esc(r.name)+"</td><td>"+esc(r.status)+"</td>";
+        lt.appendChild(tr);
+      });
+    }
+
+    var bn = await api("/api/bans");
+    var bans = (bn.data && bn.data.bans) || [];
+    var bb = document.getElementById("ban-list");
+    if (bb) bb.textContent = bans.length ? bans.join(", ") : "—";
+
+    var logs = [];
+    try { logs = JSON.parse(sessionStorage.getItem("parokh_admin_audit")||"[]"); } catch(e){}
+    var ab = document.getElementById("audit-body");
+    if (ab) {
+      ab.innerHTML = "";
+      logs.slice(0,100).forEach(function(L){
+        var tr=document.createElement("tr");
+        tr.innerHTML="<td>"+esc(L.t)+"</td><td>"+esc(L.who)+"</td><td>"+esc(L.action)+"</td>";
+        ab.appendChild(tr);
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    var btn = document.getElementById("adm-login-btn");
+    if (btn) btn.addEventListener("click", doLogin);
+    ["adm-user","adm-pass"].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el) el.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); doLogin(); } });
+    });
+    var lo = document.getElementById("adm-logout");
+    if (lo) lo.addEventListener("click", logout);
+
+    var banBtn = document.getElementById("ban-btn");
+    if (banBtn) banBtn.addEventListener("click", async function(){
+      var em = (document.getElementById("ban-email")||{}).value||"";
+      await api("/api/bans", { method:"POST", body: JSON.stringify({ email: em, action: "ban" }) });
+      log("ban:"+em); refresh();
+    });
+    var unbanBtn = document.getElementById("unban-btn");
+    if (unbanBtn) unbanBtn.addEventListener("click", async function(){
+      var em = (document.getElementById("ban-email")||{}).value||"";
+      await api("/api/bans", { method:"POST", body: JSON.stringify({ email: em, action: "unban" }) });
+      log("unban:"+em); refresh();
+    });
+    var notifBtn = document.getElementById("notif-send");
+    if (notifBtn) notifBtn.addEventListener("click", async function(){
+      var em = (document.getElementById("notif-email")||{}).value||"";
+      var tx = (document.getElementById("notif-text")||{}).value||"";
+      await api("/api/notifications", { method:"POST", body: JSON.stringify({ email: em, text: tx }) });
+      log("notif:"+em); refresh();
+    });
+    var clearA = document.getElementById("clear-audit");
+    if (clearA) clearA.addEventListener("click", function(){
+      sessionStorage.setItem("parokh_admin_audit","[]"); log("clear_audit"); refresh();
+    });
+
+    document.querySelectorAll("input[type=password]").forEach(function(input){
+      if (input.dataset.eyeBound) return;
+      input.dataset.eyeBound="1";
+      var wrap=document.createElement("div"); wrap.className="pass-wrap";
+      input.parentNode.insertBefore(wrap,input); wrap.appendChild(input);
+      var b=document.createElement("button"); b.type="button"; b.className="pass-eye"; b.textContent="👁";
+      b.onclick=function(){ var s=input.type==="password"; input.type=s?"text":"password"; b.textContent=s?"🙈":"👁"; };
+      wrap.appendChild(b);
+    });
+
+    if (token()) { showPanel(); refresh(); } else showLogin();
+  });
+
+  var last = Date.now();
+  ["click","keydown","mousemove","touchstart"].forEach(function(ev){
+    document.addEventListener(ev, function(){ last = Date.now(); }, { passive:true });
+  });
+  setInterval(function(){
+    if (token() && Date.now() - last > 5*60*1000) logout();
+  }, 15000);
+
+  var dict = {
+    fa: { title:"ورود مدیریت", user:"نام کاربری", pass:"رمز عبور", login:"ورود", panel:"پنل مدیریت", logout:"خروج" },
+    en: { title:"Admin login", user:"Username", pass:"Password", login:"Login", panel:"Admin panel", logout:"Logout" }
+  };
+  function applyAdminLang(){
+    var lang = localStorage.getItem("parokh_lang") || "fa";
+    var L = dict[lang] || dict.fa;
+    var isFa = lang === "fa";
+    document.documentElement.lang = isFa ? "fa" : "en";
+    document.documentElement.dir = isFa ? "rtl" : "ltr";
+    document.body.classList.toggle("rtl", isFa);
+    var t = document.querySelector("#login-box h1"); if (t) t.textContent = L.title;
+    var labels = document.querySelectorAll("#login-box label");
+    if (labels[0]) labels[0].textContent = L.user;
+    if (labels[1]) labels[1].textContent = L.pass;
+    var btn = document.getElementById("adm-login-btn"); if (btn) btn.textContent = L.login;
+    var lo = document.getElementById("adm-logout"); if (lo) lo.textContent = L.logout;
+    document.querySelectorAll("#adm-panel h1, #panel-box h1, .admin-head h1").forEach(function(h){ h.textContent = L.panel; });
+  }
+  applyAdminLang();
+  document.querySelectorAll("[data-lang-toggle]").forEach(function(b){
+    b.addEventListener("click", function(){ setTimeout(applyAdminLang, 80); });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var dict = {
+    fa: {
+      title: "ورود مدیریت",
+      user: "نام کاربری",
+      pass: "رمز عبور",
+      login: "ورود",
+      panel: "پنل مدیریت",
+      logout: "خروج",
+      home: "خانه",
+      users: "کاربران",
+      orders: "سفارش‌ها",
+      licenses: "لایسنس‌ها",
+      newOrders: "سفارش‌های جدید (از سرور)",
+      licReq: "درخواست لایسنس کاربران",
+      localUsers: "کاربران محلی",
+      hint: "رمز فقط در Cloudflare Secrets تنظیم می‌شود."
+    },
+    en: {
+      title: "Admin login",
+      user: "Username",
+      pass: "Password",
+      login: "Login",
+      panel: "Admin panel",
+      logout: "Logout",
+      home: "Home",
+      users: "Users",
+      orders: "Orders",
+      licenses: "Licenses",
+      newOrders: "New orders (from server)",
+      licReq: "User license requests",
+      localUsers: "Local users",
+      hint: "Contact the site owner if you forgot the password."
+    }
+  };
+  function lang(){ return localStorage.getItem("parokh_lang") || "fa"; }
+  function applyAdminLang(){
+    var L = dict[lang()] || dict.fa;
+    var isFa = lang() === "fa";
+    document.documentElement.lang = isFa ? "fa" : "en";
+    document.documentElement.dir = isFa ? "rtl" : "ltr";
+    document.body.classList.toggle("rtl", isFa);
+    var h1 = document.querySelector("#login-box h1, .login-card h1, h1");
+    if (h1 && (h1.closest("#login-box") || h1.closest("#adm-login") || document.getElementById("adm-login-btn"))) {
+      var loginVisible = document.getElementById("login-box") && document.getElementById("login-box").style.display !== "none";
+      // set login title if login form visible
+    }
+    var map = [
+      ["#login-box h1", L.title],
+      ["label[for='adm-user'], #login-box label:first-of-type", L.user],
+      ["#adm-login-btn", L.login],
+      ["#adm-logout", L.logout],
+      [".admin-top h1, #panel-box h1, #adm-panel h1", L.panel]
+    ];
+    document.querySelectorAll("#login-box label").forEach(function(lb, i){
+      if (i===0) lb.textContent = L.user;
+      if (i===1) lb.textContent = L.pass;
+    });
+    var t = document.querySelector("#login-box h1");
+    if (t) t.textContent = L.title;
+    var btn = document.getElementById("adm-login-btn");
+    if (btn) btn.textContent = L.login;
+    var lo = document.getElementById("adm-logout");
+    if (lo) lo.textContent = L.logout;
+    document.querySelectorAll("a.btn, .header a.btn").forEach(function(a){
+      if (/خانه|Home/i.test(a.textContent)) a.textContent = L.home;
+    });
+    // panel headings
+    document.querySelectorAll("#adm-panel h1, #panel-box h1, .admin-head h1").forEach(function(h){ h.textContent = L.panel; });
+    document.querySelectorAll(".stat-card p, .stat p").forEach(function(p){
+      var x = p.textContent.trim();
+      if (/کاربر|Users/i.test(x)) p.textContent = L.users;
+      if (/سفارش|Orders/i.test(x)) p.textContent = L.orders;
+      if (/لایسنس|Licenses/i.test(x)) p.textContent = L.licenses;
+    });
+    document.querySelectorAll(".panel h2, .panel > h3, section h2").forEach(function(h){
+      var x = h.textContent.trim();
+      if (/سفارش/.test(x) || /orders/i.test(x)) h.textContent = L.newOrders;
+      if (/درخواست لایسنس|license request/i.test(x)) h.textContent = L.licReq;
+      if (/کاربران محلی|Local users/i.test(x)) h.textContent = L.localUsers;
+    });
+    var hint = document.querySelector("#login-box p[style], #login-box .hint");
+    if (hint && /Console|localStorage|فراموش/.test(hint.textContent)) hint.textContent = L.hint;
+  }
+  applyAdminLang();
+  document.querySelectorAll("[data-lang-toggle]").forEach(function(b){
+    b.addEventListener("click", function(){ setTimeout(applyAdminLang, 60); });
+  });
+  // readable inputs
+  document.querySelectorAll("input").forEach(function(inp){
+    inp.style.color = "";
+    inp.style.opacity = "1";
+  });
+})();
+</script>
+
+<p class="site-version">Version: v1.26 · Admin</p></body>
+</html>
