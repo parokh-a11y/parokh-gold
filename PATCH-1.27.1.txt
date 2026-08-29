@@ -1,0 +1,7 @@
+Replace these files only:
+  dashboard.html
+  css/style.css
+  lang/en.js
+  lang/fa.js
+
+Or full zip deploy + npx wrangler deploy
