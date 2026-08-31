@@ -1,0 +1,8 @@
+v1.29
+- New /support.html hub (form + email + Telegram + demo/buy)
+- Floating support button → support page (not only Telegram)
+- contact.html redirects to support.html
+- API POST/GET/PATCH /api/support + Telegram notify to ADMIN_CHAT_ID
+- Admin: Support Tickets panel
+- Added missing nav_terms / nav_privacy / nav_license i18n (footer language fix)
+- WhatsApp deferred
