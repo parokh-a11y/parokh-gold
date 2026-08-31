@@ -1,6 +1,0 @@
-v1.28 — Payment via Telegram (no wallet/TXID on site)
-- Purchase request + refund acknowledgement
-- Admin Control Center (orders, payments, bans, notify, audit, stats)
-- Payment FAQ aligned to manual Telegram review
-- SVG password eyes, mobile menu i18n
-- Pricing source: $39 / $119 / $199
