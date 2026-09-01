@@ -1,0 +1,1 @@
+v2.0 — complete rebuild from v1.29: single support hub, payment cleanup, dashboard, admin mobile, SVG password eyes
