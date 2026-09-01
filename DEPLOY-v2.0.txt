@@ -1,0 +1,5 @@
+v2.0 deploy
+npx wrangler deploy
+npx wrangler secret put TELEGRAM_BOT_TOKEN
+npx wrangler secret put ADMIN_CHAT_ID
+Email: support@parokh.ir via Cloudflare Email Routing

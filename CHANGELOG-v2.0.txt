@@ -1,0 +1,11 @@
+v2.0 (from clean v1.29)
+- Support hub: one form for demo / buy / general (MT5+broker required)
+- Purchase page: no dual order form; CTA to support only
+- Payment copy: no on-site wallet/TXID/auto-verify
+- Dashboard: license request UX removed; CTAs to support
+- Worker: /api/support rate-limit + honeypot + Telegram notify
+- Admin: Requires Attention + mobile layout CSS + password eye
+- Login/Register: SVG password eye inside field
+- Global links: support float + demo CTAs → support.html
+- contact.html → support.html
+- Pricing keys aligned $39/$119/$199
