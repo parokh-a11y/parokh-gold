@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin · PAROKH GOLD</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo-header.png" type="image/png">
+<style>
+body.admin-body { margin:0; background:#0b0b0c; color:#e8e8ea; font-family:Inter,system-ui,sans-serif; }
+.admin-app { display:flex; min-height:100vh; }
+.admin-side {
+  width:240px; background:#121214; border-right:1px solid rgba(212,175,55,.18);
+  padding:20px 14px; flex-shrink:0; position:sticky; top:0; height:100vh; overflow:auto;
+}
+.admin-side h1 { font-size:.95rem; color:#d4af37; margin:0 0 18px; letter-spacing:.04em; }
+.admin-nav button {
+  display:block; width:100%; text-align:left; background:transparent; border:0;
+  color:#bdbdc2; padding:10px 12px; border-radius:8px; cursor:pointer; font-size:.9rem; margin-bottom:4px;
+}
+.admin-nav button:hover, .admin-nav button.active { background:rgba(212,175,55,.12); color:#f0d78c; }
+.admin-main { flex:1; padding:24px; min-width:0; }
+.admin-top { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+.admin-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:22px; }
+.admin-card {
+  background:#161618; border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:16px;
+}
+.admin-card b { display:block; font-size:1.5rem; color:#d4af37; }
+.admin-card span { font-size:.8rem; opacity:.7; }
+.admin-panel { display:none; }
+.admin-panel.active { display:block; }
+.admin-table { width:100%; border-collapse:collapse; font-size:.88rem; }
+.admin-table th, .admin-table td { padding:10px 8px; border-bottom:1px solid rgba(255,255,255,.06); text-align:left; }
+.admin-table th { color:#d4af37; font-weight:600; }
+.admin-login {
+  max-width:380px; margin:80px auto; background:#161618; border:1px solid rgba(212,175,55,.25);
+  border-radius:16px; padding:28px;
+}
+.admin-login input {
+  width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.12);
+  background:#0e0e10; color:#fff; margin-bottom:12px;
+}
+.admin-login .btn { width:100%; }
+.admin-actions { display:flex; flex-wrap:wrap; gap:6px; }
+.admin-actions button {
+  font-size:.75rem; padding:6px 10px; border-radius:8px; border:1px solid rgba(212,175,55,.35);
+  background:transparent; color:#e8e8ea; cursor:pointer;
+}
+.admin-actions button:hover { background:rgba(212,175,55,.15); }
+.admin-msg { color:#f87171; font-size:.9rem; min-height:1.2em; }
+@media (max-width:800px) {
+  .admin-app { flex-direction:column; }
+  .admin-side { width:100%; height:auto; position:relative; border-right:0; border-bottom:1px solid rgba(212,175,55,.18); }
+  .admin-nav { display:flex; flex-wrap:wrap; gap:4px; }
+  .admin-nav button { width:auto; }
+}
+</style>
+</head>
+<body class="admin-body">
+<div id="login-view" class="admin-login">
+  <h2 style="margin:0 0 8px;color:#d4af37">PAROKH GOLD Admin</h2>
+  <p style="opacity:.7;font-size:.9rem;margin:0 0 16px">Control Center</p>
+  <input type="text" id="a-user" placeholder="Username" autocomplete="username">
+  <div class="pass-wrap" style="position:relative;margin-bottom:12px">
+    <input type="password" id="a-pass" placeholder="Password" autocomplete="current-password" style="width:100%;padding:12px 40px 12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0e0e10;color:#fff">
+    <button type="button" class="pass-eye-svg" id="a-pass-eye" aria-label="Show password" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;color:#aaa">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+  </div>
+  <button type="button" class="btn btn-primary" id="a-login">Sign in</button>
+  <p class="admin-msg" id="a-login-msg"></p>
+  <p style="margin-top:16px;font-size:.75rem;opacity:.45">Version: v2.0 · Admin</p>
+</div>
+
+<div id="app-view" class="admin-app" hidden>
+  <aside class="admin-side">
+    <h1>PAROKH GOLD</h1>
+    <nav class="admin-nav" id="admin-nav">
+      <button type="button" data-panel="dash" class="active">Dashboard</button>
+      <button type="button" data-panel="orders">Orders</button>
+      <button type="button" data-panel="payments">Payments</button>
+      <button type="button" data-panel="licenses">License Requests</button>
+      <button type="button" data-panel="tickets">Support Tickets</button>
+      <button type="button" data-panel="bans">Banned Users</button>
+      <button type="button" data-panel="notify">Notifications</button>
+      <button type="button" data-panel="audit">Audit Log</button>
+      <button type="button" data-panel="system">System Status</button>
+    </nav>
+    <button type="button" class="btn btn-secondary btn-sm" id="a-logout" style="margin-top:16px;width:100%">Logout</button>
+  </aside>
+  <main class="admin-main">
+    <div class="admin-top">
+      <h2 id="panel-title">Dashboard</h2>
+      <a href="index.html" class="btn btn-secondary btn-sm">Home</a>
+    </div>
+
+    <section class="admin-panel active" id="panel-dash">
+      <div class="admin-cards" id="stat-cards"></div>
+      <h3 style="color:#d4af37;font-size:.95rem">Requires attention</h3>
+      <div id="attention" style="opacity:.85;font-size:.9rem;margin-bottom:16px"></div>
+      <h3 style="color:#d4af37;font-size:.95rem">Recent orders</h3>
+      <div style="overflow:auto"><table class="admin-table" id="recent-orders"><thead><tr><th>ID</th><th>Email</th><th>Plan</th><th>Amount</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="admin-panel" id="panel-orders">
+      <div style="overflow:auto"><table class="admin-table" id="tbl-orders"><thead><tr>
+        <th>ID</th><th>Customer</th><th>Email</th><th>Plan</th><th>Amount</th><th>Refund</th><th>Status</th><th>Created</th><th>Actions</th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="admin-panel" id="panel-payments">
+      <p style="opacity:.7;font-size:.9rem">Manual review queue — payment instructions & TXID handled on Telegram.</p>
+      <div style="overflow:auto"><table class="admin-table" id="tbl-pay"><thead><tr>
+        <th>Order</th><th>Email</th><th>Plan</th><th>Amount</th><th>Status</th><th>Actions</th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="admin-panel" id="panel-licenses">
+      <div style="overflow:auto"><table class="admin-table" id="tbl-lic"><thead><tr>
+        <th>Email</th><th>Name</th><th>Status</th><th>Date</th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+    
+    <section class="admin-panel" id="panel-tickets">
+      <div style="overflow:auto"><table class="admin-table" id="tbl-tickets"><thead><tr>
+        <th>ID</th><th>When</th><th>Email</th><th>Subject</th><th>Message</th><th>Status</th><th>Action</th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="admin-panel" id="panel-bans">
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+        <input type="email" id="ban-email" placeholder="email@example.com" style="flex:1;min-width:180px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:#121214;color:#fff">
+        <button type="button" class="btn btn-secondary btn-sm" id="ban-add">Ban</button>
+      </div>
+      <ul id="ban-list" style="list-style:none;padding:0;margin:0"></ul>
+    </section>
+
+    <section class="admin-panel" id="panel-notify">
+      <div class="form-field"><label>Email (leave empty + All for broadcast)</label>
+        <input type="email" id="n-email" placeholder="user@email.com" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:#121214;color:#fff">
+      </div>
+      <div class="form-field" style="margin-top:10px"><label>Message</label>
+        <textarea id="n-text" rows="3" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:#121214;color:#fff"></textarea>
+      </div>
+      <label style="display:flex;gap:8px;margin:10px 0;font-size:.9rem"><input type="checkbox" id="n-all"> Send to all known users</label>
+      <button type="button" class="btn btn-primary btn-sm" id="n-send">Send notification</button>
+      <p class="admin-msg" id="n-msg"></p>
+    </section>
+
+    <section class="admin-panel" id="panel-audit">
+      <div style="overflow:auto"><table class="admin-table" id="tbl-audit"><thead><tr>
+        <th>Time</th><th>Admin</th><th>Action</th><th>Target</th><th>Result</th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="admin-panel" id="panel-system">
+      <div class="admin-cards" id="sys-cards"></div>
+      <p style="opacity:.6;font-size:.85rem;margin-top:12px">Worker · KV · Supabase Auth · Orders API · Notifications</p>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var token = sessionStorage.getItem("parokh_admin_token") || "";
+  var loginView = document.getElementById("login-view");
+  var appView = document.getElementById("app-view");
+
+  function headers() {
+    return { "Content-Type": "application/json", "Authorization": "Bearer " + token, "x-parokh-admin": token };
+  }
+  async function api(path, opt) {
+    opt = opt || {};
+    var r = await fetch(path, {
+      method: opt.method || "GET",
+      headers: headers(),
+      body: opt.body ? JSON.stringify(opt.body) : undefined
+    });
+    var d = {};
+    try { d = await r.json(); } catch(e) {}
+    if (!r.ok) throw new Error(d.error || ("http_" + r.status));
+    return d;
+  }
+
+  document.getElementById("a-pass-eye").onclick = function(){
+    var i = document.getElementById("a-pass");
+    i.type = i.type === "password" ? "text" : "password";
+  };
+
+  document.getElementById("a-login").onclick = async function(){
+    var msg = document.getElementById("a-login-msg");
+    msg.textContent = "";
+    try {
+      var r = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: document.getElementById("a-user").value.trim(),
+          pass: document.getElementById("a-pass").value
+        })
+      });
+      var d = await r.json();
+      if (!r.ok) throw new Error(d.error || "login_failed");
+      token = d.token || d.adminToken || "";
+      if (!token) throw new Error("no_token");
+      sessionStorage.setItem("parokh_admin_token", token);
+      showApp();
+    } catch (e) {
+      msg.textContent = e.message || "Error";
+    }
+  };
+
+  document.getElementById("a-logout").onclick = function(){
+    sessionStorage.removeItem("parokh_admin_token");
+    token = "";
+    appView.hidden = true;
+    loginView.hidden = false;
+  };
+
+  document.querySelectorAll("#admin-nav button").forEach(function(btn){
+    btn.onclick = function(){
+      document.querySelectorAll("#admin-nav button").forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      var id = btn.getAttribute("data-panel");
+      document.querySelectorAll(".admin-panel").forEach(function(p){ p.classList.remove("active"); });
+      var panel = document.getElementById("panel-" + id);
+      if (panel) panel.classList.add("active");
+      document.getElementById("panel-title").textContent = btn.textContent;
+      loadPanel(id);
+    };
+  });
+
+  async function showApp(){
+    loginView.hidden = true;
+    appView.hidden = false;
+    try { await api("/api/admin/ping"); loadPanel("dash"); }
+    catch(e) {
+      sessionStorage.removeItem("parokh_admin_token");
+      token = "";
+      appView.hidden = true;
+      loginView.hidden = false;
+    }
+  }
+
+  async function loadPanel(id){
+    if (id === "dash") return loadDash();
+    if (id === "orders" || id === "payments") return loadOrders(id);
+    if (id === "licenses") return loadLic();
+    if (id === "tickets") return loadTickets();
+    if (id === "bans") return loadBans();
+    if (id === "audit") return loadAudit();
+    if (id === "system") return loadSys();
+  }
+
+  async function loadDash(){
+    var st = await api("/api/admin/stats");
+    var cards = document.getElementById("stat-cards");
+    cards.innerHTML = [
+      ["Orders", st.totalOrders],
+      ["Pending pay", st.pendingPayments],
+      ["Pay review", st.paymentReviews],
+      ["Paid", st.paidOrders],
+      ["License req", st.licenseRequests],
+      ["Banned", st.bannedUsers]
+    ].map(function(x){ return '<div class="admin-card"><b>'+x[1]+'</b><span>'+x[0]+'</span></div>'; }).join("");
+    document.getElementById("attention").textContent =
+      (st.pendingPayments||0) + " pending payments · " + (st.paymentReviews||0) + " in review · " + (st.pendingLicenses||0) + " license requests";
+    var od = await api("/api/orders");
+    var list = (od.orders || []).slice(0, 12);
+    var tb = document.querySelector("#recent-orders tbody");
+    tb.innerHTML = list.map(function(o){
+      return "<tr><td>"+esc(o.id)+"</td><td>"+esc(o.email)+"</td><td>"+esc(o.plan)+"</td><td>$"+(o.price!=null?o.price:"")+"</td><td>"+esc(o.paymentStatus||o.status)+"</td></tr>";
+    }).join("") || "<tr><td colspan='5'>No orders</td></tr>";
+  }
+
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+
+  async function orderAction(id, action){
+    if (!confirm("Confirm: " + action + " for " + id + "?")) return;
+    await api("/api/orders/" + encodeURIComponent(id) + "/payment", { method: "POST", body: { action: action } });
+    loadOrders(document.querySelector("#admin-nav button.active").getAttribute("data-panel"));
+  }
+
+  async function loadOrders(mode){
+    var od = await api("/api/orders");
+    var list = od.orders || [];
+    if (mode === "payments") {
+      list = list.filter(function(o){
+        var s = o.paymentStatus || "";
+        return s === "PAYMENT_PENDING" || s === "WAITING_FOR_PAYMENT" || s === "PAYMENT_REVIEW";
+      });
+      var tb = document.querySelector("#tbl-pay tbody");
+      tb.innerHTML = list.map(function(o){
+        return "<tr><td>"+esc(o.id)+"</td><td>"+esc(o.email)+"</td><td>"+esc(o.plan)+"</td><td>$"+(o.price!=null?o.price:"")+"</td><td>"+esc(o.paymentStatus)+"</td><td class='admin-actions'>"+
+          "<button data-id='"+esc(o.id)+"' data-a='review'>Review</button>"+
+          "<button data-id='"+esc(o.id)+"' data-a='approve'>Approve</button>"+
+          "<button data-id='"+esc(o.id)+"' data-a='reject'>Reject</button></td></tr>";
+      }).join("") || "<tr><td colspan='6'>Queue empty</td></tr>";
+      tb.querySelectorAll("button").forEach(function(b){
+        b.onclick = function(){ orderAction(b.getAttribute("data-id"), b.getAttribute("data-a")); };
+      });
+      return;
+    }
+    var tb2 = document.querySelector("#tbl-orders tbody");
+    tb2.innerHTML = list.map(function(o){
+      return "<tr><td>"+esc(o.id)+"</td><td>"+esc(o.name||"")+"</td><td>"+esc(o.email)+"</td><td>"+esc(o.plan)+"</td><td>$"+(o.price!=null?o.price:"")+
+        "</td><td>"+(o.refundAcknowledged?"Yes":"—")+"</td><td>"+esc(o.paymentStatus||o.status)+"</td><td>"+esc((o.at||o.createdAt||"").slice(0,19))+"</td><td class='admin-actions'>"+
+        "<button data-id='"+esc(o.id)+"' data-a='approve'>Approve</button>"+
+        "<button data-id='"+esc(o.id)+"' data-a='complete'>Complete</button>"+
+        "<button data-id='"+esc(o.id)+"' data-a='cancel'>Cancel</button></td></tr>";
+    }).join("") || "<tr><td colspan='9'>No orders</td></tr>";
+    tb2.querySelectorAll("button").forEach(function(b){
+      b.onclick = function(){ orderAction(b.getAttribute("data-id"), b.getAttribute("data-a")); };
+    });
+  }
+
+  async function loadLic(){
+    var d = await api("/api/license-requests");
+    var list = d.requests || [];
+    document.querySelector("#tbl-lic tbody").innerHTML = list.map(function(r){
+      return "<tr><td>"+esc(r.email)+"</td><td>"+esc(r.name)+"</td><td>"+esc(r.status)+"</td><td>"+esc((r.at||"").slice(0,19))+"</td></tr>";
+    }).join("") || "<tr><td colspan='4'>None</td></tr>";
+  }
+
+  
+  async function loadTickets(){
+    var d = await api("/api/support");
+    var list = d.tickets || [];
+    var tb = document.querySelector("#tbl-tickets tbody");
+    tb.innerHTML = list.map(function(t){
+      return "<tr><td>"+esc(t.id)+"</td><td>"+esc((t.at||"").slice(0,19))+"</td><td>"+esc(t.email)+"</td><td>"+esc(t.subject)+"</td><td style='max-width:240px;white-space:pre-wrap'>"+esc((t.message||"").slice(0,180))+"</td><td>"+esc(t.status)+"</td><td class='admin-actions'>"+
+        "<button data-id='"+esc(t.id)+"' data-s='done'>Done</button></td></tr>";
+    }).join("") || "<tr><td colspan='7'>No tickets</td></tr>";
+    tb.querySelectorAll("button").forEach(function(b){
+      b.onclick = async function(){
+        await api("/api/support", { method:"PATCH", body:{ id:b.getAttribute("data-id"), status:b.getAttribute("data-s") } });
+        loadTickets();
+      };
+    });
+  }
+
+  async function loadBans(){
+    var d = await api("/api/bans");
+    var bans = d.bans || [];
+    var ul = document.getElementById("ban-list");
+    ul.innerHTML = bans.map(function(e){
+      return "<li style='padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;gap:8px'><span>"+esc(e)+"</span><button type='button' data-e='"+esc(e)+"'>Unban</button></li>";
+    }).join("") || "<li style='opacity:.6'>No bans</li>";
+    ul.querySelectorAll("button").forEach(function(b){
+      b.onclick = async function(){
+        await api("/api/bans", { method:"POST", body:{ email:b.getAttribute("data-e"), action:"unban" } });
+        loadBans();
+      };
+    });
+  }
+  document.getElementById("ban-add").onclick = async function(){
+    var email = document.getElementById("ban-email").value.trim().toLowerCase();
+    if (!email) return;
+    if (!confirm("Ban " + email + "?")) return;
+    await api("/api/bans", { method:"POST", body:{ email:email, action:"ban" } });
+    document.getElementById("ban-email").value = "";
+    loadBans();
+  };
+
+  document.getElementById("n-send").onclick = async function(){
+    var msg = document.getElementById("n-msg");
+    msg.textContent = "";
+    try {
+      var all = document.getElementById("n-all").checked;
+      if (all && !confirm("Broadcast to ALL users?")) return;
+      await api("/api/admin/notify", {
+        method: "POST",
+        body: {
+          email: document.getElementById("n-email").value.trim(),
+          text: document.getElementById("n-text").value.trim(),
+          all: all
+        }
+      });
+      msg.style.color = "#4ade80";
+      msg.textContent = "Sent";
+    } catch(e) {
+      msg.style.color = "#f87171";
+      msg.textContent = e.message || "Error";
+    }
+  };
+
+  async function loadAudit(){
+    var d = await api("/api/admin/audit");
+    var logs = d.logs || [];
+    document.querySelector("#tbl-audit tbody").innerHTML = logs.map(function(l){
+      return "<tr><td>"+esc((l.at||"").slice(0,19))+"</td><td>"+esc(l.admin)+"</td><td>"+esc(l.action)+"</td><td>"+esc(l.target)+"</td><td>"+esc(l.result)+"</td></tr>";
+    }).join("") || "<tr><td colspan='5'>Empty</td></tr>";
+  }
+
+  async function loadSys(){
+    var st = await api("/api/admin/stats");
+    document.getElementById("sys-cards").innerHTML = [
+      ["KV durable", st.durable ? "Yes" : "No"],
+      ["Orders API", "Operational"],
+      ["Auth", "Supabase"],
+      ["Payment model", "Telegram manual"]
+    ].map(function(x){ return '<div class="admin-card"><b style="font-size:1rem">'+x[1]+'</b><span>'+x[0]+'</span></div>'; }).join("");
+  }
+
+  if (token) showApp();
+})();
+</script>
+</body>
+</html>

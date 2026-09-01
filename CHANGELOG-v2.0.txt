@@ -1,0 +1,9 @@
+v2.0
+- Support page = single entry for demo + purchase + general
+- Required MT5+broker for demo/buy; plan for buy
+- Honeypot + rate limit on /api/support
+- Rich Telegram notify (type, channel, plan, account, broker)
+- Dashboard: remove license request UX; CTAs to support
+- Global links: demo/support float → support.html
+- Purchase page: short path buttons to support
+- Version 2.0

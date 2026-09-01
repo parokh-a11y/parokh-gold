@@ -1,0 +1,1 @@
+v2.0 — Single support hub for demo/buy, dashboard cleanup, Telegram notify, rate limit
