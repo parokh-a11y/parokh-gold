@@ -1,5 +1,0 @@
-v1.23 Final 3 fixes
-1 Payment: fixed official address language only (no unique claim)
-2 Manual review text in purchase + lang + sales
-3 Removed parokh_session as auth source (Supabase session only)
-Deploy: npx wrangler deploy
