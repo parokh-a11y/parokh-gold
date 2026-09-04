@@ -1,0 +1,6 @@
+v1.8
+Admin: /admin.html
+User: parokh
+Pass: ParokhAdmin#2026!
+Permanent ban in admin panel. For all devices also delete in Supabase Auth Users.
+Audit: owner only, max 5000 lines
