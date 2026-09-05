@@ -1,1 +1,0 @@
-v1.30 — Payment System V1 USDT TRC-20 + blockchain verify + legacy cleanup start + logout fix
