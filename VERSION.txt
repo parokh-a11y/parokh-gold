@@ -1,0 +1,1 @@
+v1.31.1 — Supabase payment SoT, license system removed from flow, telegram manual payment removed

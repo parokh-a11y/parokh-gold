@@ -1,0 +1,20 @@
+v1.31 deploy
+
+npx wrangler deploy
+
+Secrets (if not set):
+npx wrangler secret put PAYMENT_WALLET_ADDRESS
+npx wrangler secret put TRON_RPC_URL
+npx wrangler secret put SUPABASE_URL
+npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+
+Optional:
+npx wrangler secret put USDT_TRON_CONTRACT
+npx wrangler secret put TRONGRID_API_KEY
+npx wrangler secret put TELEGRAM_BOT_TOKEN
+npx wrangler secret put ADMIN_CHAT_ID
+
+Supabase: run supabase-payments-v1.31.sql in SQL editor
+
+Default USDT TRC-20: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
+Default RPC: https://api.trongrid.io

@@ -1,0 +1,6 @@
+v1.31.1
+1. Supabase = Source of Truth for payments (insert/update/claim TXID). KV only cache/rate-limit.
+2. Atomic TXID claim + unique index expectation on payments.txid
+3. /api/license-requests → 410 Gone; license UI tabs/buttons removed; license.html → terms
+4. Admin: removed License Requests panel; payments text no longer Telegram manual queue
+5. Copy: order/EX5 fulfillment language instead of license-key system

@@ -1,0 +1,11 @@
+v1.30
+Payment System V1 (Master Prompt):
+- Fixed official wallet from secret
+- Server-side price/order ownership
+- TXID submit + unique index
+- TRON adapter (configurable RPC) USDT TRC-20 verification
+- States: WAITING_PAYMENT → TXID_SUBMITTED → VERIFYING → PAID|FAILED|PAYMENT_REVIEW
+- Purchase UI: amount, wallet, QR, TXID, verify
+- Optional supabase-payments-v1.sql
+- Dashboard logout hardening
+- Version baseline from v1.29 (v2.0 discarded)

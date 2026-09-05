@@ -1,0 +1,19 @@
+v1.31
+Payment:
+- Strict USDT contract verification
+- Recipient from blockchain event (base58/hex normalized)
+- Supabase payments as primary store (+ KV cache)
+- TXID unique via DB + index
+- Status: PENDING_RETRY, MANUAL_REVIEW
+- Client-side QR (no external QR image API)
+- Rate limits retained
+
+Session/UI:
+- Header shows Panel + Logout when logged in
+- Order create uses real Supabase session; less false login redirects
+- Demo CTA → support.html?type=demo
+- Admin login overlay fixed (hidden when in app)
+
+Removed from active payment path:
+- External QR API
+- Soft JSON wallet string search as sole recipient check

@@ -1,0 +1,5 @@
+v1.31.1
+npx wrangler deploy
+Required secrets:
+  PAYMENT_WALLET_ADDRESS, TRON_RPC_URL, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+Run SQL: supabase-payments-v1.31.sql (unique txid index required)
