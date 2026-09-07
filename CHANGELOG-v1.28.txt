@@ -1,9 +1,0 @@
-PAROKH GOLD v1.28
-1. Payment: site only creates Order; payment instructions on Telegram Support
-2. Refund acknowledgement required before order
-3. Removed on-site wallet address & TXID form for users
-4. Admin Control Center rebuilt
-5. FAQ payment texts updated (manual review)
-6. UI: SVG password visibility icons
-7. Language fixes for dashboard mobile menu
-8. Google login path preserved

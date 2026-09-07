@@ -1,7 +1,0 @@
-v1.27 Option A
-- Logout: await signOut, clear sb-* localStorage, redirect to login.html
-- Header power button + dashboard logout button + inactivity
-- Custom Domain (Option B) postponed
-
-Deploy: npx wrangler deploy
-Test: Login with Google → dashboard → Logout → must go to login and stay logged out
