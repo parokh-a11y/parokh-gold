@@ -1,0 +1,12 @@
+v1.32 deploy
+1) Copy files to GitHub folder
+2) npx wrangler deploy
+3) Secrets if missing:
+   npx wrangler secret put TELEGRAM_BOT_TOKEN
+   npx wrangler secret put ADMIN_CHAT_ID
+
+Test:
+- purchase form without login
+- demo form without login  
+- support form
+- open https://yoursite/api/orders with POST should return JSON not HTML

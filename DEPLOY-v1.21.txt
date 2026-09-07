@@ -1,0 +1,18 @@
+v1.21
+- JWT verify via Supabase /auth/v1/user
+- Orders full require auth; email from token
+- License/notifications require JWT
+- TXID: POST /api/orders/:id/payment
+- Admin login rate limit (KV)
+- Ban enforced server-side
+- KV id bound: 0777f25c66814a3ebe69c21a32a17b14
+- Contact Telegram Parokhgoldea
+- SEO schema price / meta dedupe / canonical
+
+Deploy:
+npx wrangler secret put SUPABASE_ANON_KEY
+npx wrangler secret put SUPABASE_URL   # optional if default ok
+npx wrangler secret put PAYMENT_ADDRESS_TRC20  # when ready
+npx wrangler deploy
+
+Test: /api/admin/ping with admin token -> storage:"kv"
