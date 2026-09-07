@@ -1,0 +1,1 @@
+v2.0 — Guest buy/demo, wallet+QR+TXID, site chatbot, no public login
