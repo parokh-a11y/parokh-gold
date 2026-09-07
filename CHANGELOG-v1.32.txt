@@ -1,9 +1,0 @@
-v1.32 Option B
-- Guest purchase/demo: name + email only (no login required)
-- Orders notify admin Telegram with source + reply channel
-- Sales/demo bot: https://t.me/ParokhGoldEABot
-- Human support: https://t.me/Parokhgoldea
-- Dashboard not required for buy/demo; kept optional
-- Broker/MT5 not required at request time (collected later)
-- wrangler not_found: 404-page (reduce API→HTML)
-- License wording softened toward dedicated EX5 / plan period

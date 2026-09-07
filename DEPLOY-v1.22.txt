@@ -1,8 +1,0 @@
-v1.22
-1 FAQ keys complete fa/en
-2 Payment: fixed address mode + manual review text (no unique/auto claims)
-3 sales.js full order sends Supabase Bearer
-4 Dashboard: no /api/bans; session from Supabase only
-5 Canonical all public; private noindex
-Deploy: npx wrangler deploy
-Need: SUPABASE_ANON_KEY secret for JWT

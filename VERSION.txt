@@ -1,1 +1,0 @@
-v1.32 — Option B: short email purchase/demo, bot+human channels, no forced dashboard/login
