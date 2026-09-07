@@ -1,0 +1,4 @@
+v2.0.1
+- paymentWalletAddress is synchronous (fixes Promise/QR/wallet bug)
+- Chatbot loaded only once (no double bubble)
+- Chatbot: Copy wallet button after order

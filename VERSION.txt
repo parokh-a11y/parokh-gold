@@ -1,0 +1,1 @@
+v2.0.1 — fix wallet sync, single chat load, copy wallet in chat

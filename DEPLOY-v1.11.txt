@@ -1,0 +1,23 @@
+v1.11
+
+MUST deploy Worker: npx wrangler deploy
+
+New API:
+- POST/GET /api/orders
+- POST/GET /api/notifications
+- POST/GET /api/license-requests
+
+Fixes:
+- Gallery no crop
+- Homepage equal image frames (height 280px contain)
+- Admin: change own password, manage admins (owner), send notifications
+- Orders + license requests visible to admin via Worker memory
+- Offline order posts to API then opens Telegram
+- Login button becomes «پنل من» when logged in
+- Auto-logout 5 minutes idle (dashboard + admin)
+- Feature card icon style polish
+
+Admin: /admin.html  parokh / ParokhAdmin#2026!
+
+NOTE: Worker memory resets on redeploy — orders/notifs in Worker are not permanent DB.
+Payment system still next version after approval.

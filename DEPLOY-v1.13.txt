@@ -1,0 +1,19 @@
+v1.13
+
+CRITICAL FIX: register.html had broken JS (`var data = if (...)`) so signup/login flow failed.
+- Register now correctly calls signUp and returns data
+- Login shows clear message if email not confirmed
+
+Also:
+- Social icons dim + glow on hover (site-wide)
+- Footer column titles bolder
+- Login control graphic; on dashboard becomes power/logout
+- User password change on dashboard (Supabase updateUser)
+- Admin note + notify for user password
+- Order Telegram -> @Parokhea with single encodeURIComponent
+- canonical/og -> https://parokh.ir
+
+Deploy: GitHub Desktop Commit + Push
+
+Supabase tip: Authentication -> Providers -> Email -> confirm email settings.
+If Confirm email is ON, user must click email link before login works.
