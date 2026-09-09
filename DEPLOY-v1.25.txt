@@ -1,0 +1,9 @@
+v1.25
+1 Google Login uses getParokhSupabase() — redirect https://www.parokh.ir/dashboard.html
+2 Payment: fixed_official only; all unique/auto texts cleaned
+3 Session: Supabase only; parokh_session/parokh_users not auth source
+4 Remember me = save email only
+5 /api/me/status for banned self-check (JWT); /api/bans admin only
+6 Pricing 39/119/199
+Deploy: npx wrangler deploy
+Test Google: login → Continue with Google → account → dashboard

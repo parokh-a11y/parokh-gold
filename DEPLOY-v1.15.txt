@@ -1,0 +1,21 @@
+v1.15
+
+Admin page: /admin.html  (old mgmt-k9p2x7qh.html removed)
+
+Sales page (purchase.html):
+- Hero TRY DEMO + BUY NOW
+- Features fully data-i18n
+- DEMO section BEFORE pricing (form + backend-ready id)
+- Pricing 1m/6m/12m Launch prices exact
+- License policy + link to terms.html#license
+- Order checkbox links to license policy
+- USDT TRC20 modular panel
+- FAQ expanded
+- FA/EN language keys for all sales strings
+
+Index:
+- Old Free/$199 pricing replaced with 3 Launch plans + links to purchase
+
+Wallet: set js/sales.js WALLET
+
+Deploy: GitHub Desktop Commit + Push

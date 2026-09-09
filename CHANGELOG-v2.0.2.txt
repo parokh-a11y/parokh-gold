@@ -1,0 +1,7 @@
+v2.0.2
+Structure rule: keep approved stable structure; fix only.
+- Purchase hero RTL/text fixed + i18n keys
+- Site chatbot upgraded to Telegram-like menu:
+  Buy / Demo / Info / Track / Human support / Telegram bot
+- Plan confirm step, wallet + QR in chat, copy wallet, TXID flow
+- Priority: sales path from all channels
