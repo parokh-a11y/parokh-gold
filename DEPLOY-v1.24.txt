@@ -1,0 +1,10 @@
+v1.24
+- Content pages FA/EN: privacy, terms, disclaimer, license, about, contact, guide keys
+- Unified header/footer + hamburger on all pages
+- Register i18n key
+- Footer single Login
+- Pricing 39/119/199 only
+- Payment official fixed + manual review text
+- Login Continue with Google (Supabase OAuth — enable Google provider in Supabase dashboard)
+Deploy: npx wrangler deploy
+Google: Supabase Auth → Providers → Google → enable + Client ID/Secret

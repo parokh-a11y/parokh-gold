@@ -1,0 +1,18 @@
+v1.14
+
+NEW: Professional sales page (purchase.html) + sales.css + sales.js
+- Plans: 1m $39, 6m $119, 12m $199 Launch (no Lifetime)
+- USDT TRC20 modular payment UI (set wallet in js/sales.js WALLET)
+- Order -> /api/orders + Telegram @Parokhea
+- EN/FA ready
+
+Also:
+- Icon hover: mono off / bright gold on (lamp style)
+- Graphic login ONLY in header; footer stays text
+- Site nav/footer buy links -> purchase.html
+- Admin language toggle basic bilingual
+- canonical parokh.ir (from v1.13)
+
+Set TRC20 address: edit js/sales.js → WALLET = "T..."
+
+Deploy: GitHub Desktop Commit + Push

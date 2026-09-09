@@ -1,0 +1,16 @@
+v2.0 deploy
+npx wrangler deploy
+
+Secrets:
+npx wrangler secret put PAYMENT_WALLET_ADDRESS
+npx wrangler secret put TELEGRAM_BOT_TOKEN
+npx wrangler secret put ADMIN_CHAT_ID
+
+Optional alias:
+npx wrangler secret put PAYMENT_ADDRESS_TRC20
+
+Test:
+1) purchase.html without login → order → wallet/QR
+2) submit TXID
+3) chat bubble buy/demo
+4) Telegram notification
