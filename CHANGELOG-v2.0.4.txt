@@ -1,0 +1,8 @@
+v2.0.4
+- One Telegram message per event (dedupe)
+- Chatbot: fixed centered size, theme light/dark, keyboard safe
+- Purchase: checkbox overflow fixed, broker+account after pay
+- TXID fields mobile-safe
+- Remove public login icons
+- Font stack aligned with site
+- Zip cleaned of old deploy notes

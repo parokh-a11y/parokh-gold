@@ -1,0 +1,6 @@
+v2.0.2
+npx wrangler deploy
+# wallet/telegram secrets if not set:
+# npx wrangler secret put PAYMENT_WALLET_ADDRESS
+# npx wrangler secret put TELEGRAM_BOT_TOKEN
+# npx wrangler secret put ADMIN_CHAT_ID
