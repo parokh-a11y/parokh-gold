@@ -1,2 +1,0 @@
-v1.7.1 CSS clean rebuild. Replace css/style.css critical.
-Admin: parokh / ParokhAdmin#2026!

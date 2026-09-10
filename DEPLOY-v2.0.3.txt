@@ -1,2 +1,0 @@
-npx wrangler deploy
-# secrets: TELEGRAM_BOT_TOKEN ADMIN_CHAT_ID PAYMENT_WALLET_ADDRESS
