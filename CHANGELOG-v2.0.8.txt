@@ -1,0 +1,7 @@
+v2.0.8
+Fix: demo/order admin Telegram was failing
+- Removed mailto: URL button (Telegram rejects non-http URLs → whole message dropped)
+- Dedupe only after successful send
+- Retry without buttons / without HTML
+- Plain-text fallback so demo and purchase always reach ADMIN_CHAT_ID
+License admin path unchanged

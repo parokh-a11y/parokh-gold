@@ -1,0 +1,2 @@
+npx wrangler deploy
+Optional: npx wrangler secret put TRONGRID_API_KEY
