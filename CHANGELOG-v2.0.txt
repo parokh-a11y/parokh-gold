@@ -1,9 +1,0 @@
-v2.0 (base v1.29)
-- Removed public Login/Register/Dashboard links from header/footer/menus
-- Guest purchase: name + email → USDT TRC-20 wallet + QR → TXID submit
-- Guest demo request
-- Site chatbot bubble (buy/demo/support) mirrors Telegram flow
-- Telegram: @ParokhGoldEABot (sales/demo), @Parokhgoldea (human)
-- Wallet from secret PAYMENT_WALLET_ADDRESS (or PAYMENT_ADDRESS_TRC20)
-- Admin Telegram notify on order + TXID
-- No forced user accounts on sales path
