@@ -1,0 +1,6 @@
+v2.0.7
+Admin Telegram for website orders:
+- Rich HTML order card (email, MT5, TXID, …)
+- Buttons: Open email app | Received | Review | Bad TXID | EX5 ready
+- Callback webhook /api/telegram/webhook sends email via Resend (support@parokh.ir)
+Secrets: RESEND_API_KEY, optional RESEND_FROM, optional TELEGRAM_WEBHOOK_SECRET

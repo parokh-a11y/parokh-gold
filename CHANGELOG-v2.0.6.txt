@@ -1,0 +1,6 @@
+v2.0.6
+- Server required (account+broker+server) — matches EA license API
+- TRON USDT auto-verify on TXID (TronGrid; optional TRONGRID_API_KEY)
+- Hero trial/demo → purchase.html#demo (not Telegram)
+- guides/* support-float → ../support.html; remove login from guide nav
+- Chatbot: side panel (RTL left / LTR right), ~half size, scrollable body
