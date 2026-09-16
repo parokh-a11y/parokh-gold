@@ -1,7 +1,0 @@
-v2.0.9
-Admin Telegram buttons:
-- Demo: [دریافت شد] [ارسال دمو] — sends Resend email with ParokhGold-Demo.zip attachment
-- Purchase: [دریافت شد] [TXID نامعتبر] [تحویل خرید]
-- Merged old Received+Review
-- Demo/purchase email texts separated
-Demo zip location: files/ParokhGold-Demo.zip  OR secret DEMO_ZIP_URL
