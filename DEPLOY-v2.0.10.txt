@@ -1,0 +1,3 @@
+npx wrangler deploy
+npx wrangler secret put DEMO_TELEGRAM_FILE_ID
+See SETUP-DEMO-TELEGRAM.txt
