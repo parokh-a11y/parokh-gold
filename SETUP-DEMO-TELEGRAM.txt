@@ -1,0 +1,34 @@
+PAROKH GOLD — Demo one-click email (Telegram file_id)
+
+1) Deploy site package first:
+   npx wrangler deploy
+
+2) In Telegram, open the SAME bot whose token is TELEGRAM_BOT_TOKEN
+   (the bot that sends admin order messages).
+
+3) Send the demo zip file to that bot (as a document).
+
+4) In browser open (replace TOKEN):
+   https://api.telegram.org/botTOKEN/getUpdates
+
+5) Find the last "document" → copy "file_id"
+   Example: "file_id":"BQACAgQAAxkB..."
+
+6) Save secret:
+   npx wrangler secret put DEMO_TELEGRAM_FILE_ID
+   (paste file_id, Enter)
+
+7) Optional:
+   npx wrangler secret put DEMO_ZIP_FILENAME
+   value: ParokhGold-Demo.zip
+
+8) npx wrangler deploy
+
+9) Test: site demo request → admin Telegram → button ارسال دمو
+   Customer email should receive zip attachment.
+
+Notes:
+- file_id works only with THAT bot token.
+- If you replace the zip later, send new file and update DEMO_TELEGRAM_FILE_ID.
+- Webhook must remain:
+  .../api/telegram/webhook
