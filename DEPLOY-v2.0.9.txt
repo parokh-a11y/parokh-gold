@@ -1,8 +1,0 @@
-1) Copy your demo zip into the site project:
-   files/ParokhGold-Demo.zip
-2) GitHub Desktop → commit + push
-3) npx wrangler deploy
-Optional:
-   npx wrangler secret put DEMO_ZIP_URL
-Webhook must already point to:
-   https://parokh-gold.parokh.workers.dev/api/telegram/webhook
