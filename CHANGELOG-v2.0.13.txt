@@ -1,0 +1,7 @@
+v2.0.13
+Videos page complete:
+- Intro: FA FTbjt0nCRbw / EN XDvQJ49adlo
+- Install: FA ROeViDmk8uY / EN 7A-438F8xeY
+- Language toggle swaps iframe src
+- Position management card = coming soon
+- Channel CTA @Parokhgold
