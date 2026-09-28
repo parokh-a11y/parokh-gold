@@ -1,0 +1,9 @@
+v2.0.16
+- Pricing cards aligned: BEST VALUE only on 12-month (home + purchase)
+- Monthly equivalent lines: ≈ $39 / $19.83 / $16.58 per month
+- Bold oval BEST VALUE badge top-center of featured card
+- FAQ updated (activation/EX5+WebRequest; multi-account = No, one MT5 only)
+- Install guide: purchase flow, WebRequest URL, one-account rules
+- Buttons guide: each button explained (FA/EN)
+- Inputs/settings guide: full input groups with descriptions
+- Testimonials: FA shows 4 Iranian only; EN shows 4 English only (added Sophia)

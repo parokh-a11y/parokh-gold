@@ -1,0 +1,8 @@
+v2.0.15
+- Luxury pricing cards (home + purchase): large price, strikethrough monthly equivalent, % OFF badges
+- 12-month renewal: $229 (launch still $199)
+- Discount vs monthly Launch rate: 6m ~49% ($234→$119), 12m ~57% ($468→$199)
+- Homepage testimonials section (bilingual sample reviews; replaceable with real ones later)
+- Videos page: 4 slots (intro + install + 2 coming soon FA/EN titles)
+- YouTube embeds keep cc_load_policy=0
+- Structure preserved from v2.0.14
