@@ -1,5 +1,0 @@
-v2.0.12
-- Remove unused pages: admin, login, register, dashboard, forgot, reset (guest sales path)
-- Large monitors (1400/1700/1920): wider .container, larger hero type
-- Purchase page Persian font aligned with homepage (Vazirmatn/Inter + Google Fonts import)
-- No intentional change to sales/payment logic
