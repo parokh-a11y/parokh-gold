@@ -1,0 +1,1 @@
+Git push files then: npx wrangler deploy

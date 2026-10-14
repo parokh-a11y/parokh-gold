@@ -1,0 +1,6 @@
+v2.1.0 (2026-10-14)
+- Product model texts aligned: official LockedPro + online license (Account+Broker+Server)
+- Removed "dedicated/personal EX5 build" claims from purchase, index, lang, chat, install, worker emails
+- Sales structure/flow unchanged
+- About page expanded: founder مجید پارخ‌پور — مهندس کامپیوتر (30+ years computer, 1.5+ years EA project)
+- Plans remain 1m/6m/12m Launch pricing
