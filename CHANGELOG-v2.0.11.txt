@@ -1,7 +1,0 @@
-v2.0.11
-- Fix guides/install.html: content after footer moved into page body; close body/html
-- Support float icon: headset (not Telegram); still links to support.html
-- Remove empty footer list items
-- Footer headings h3 for hierarchy; main landmark on index/install
-- Chat input aria-label; larger tap targets; body flex footer layout
-- apple-touch-icon + site.webmanifest; OG/twitter image path; image dimensions for CLS
