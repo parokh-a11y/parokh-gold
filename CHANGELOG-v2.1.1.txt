@@ -1,0 +1,7 @@
+v2.1.1 (2026-10-15)
+- Chatbot QR: load qrcodejs + parokh-qr on all pages before chat (and fallback inside botQr)
+- Affiliate: capture ?ref=CODE (localStorage 30 days), send with site/chat orders
+- Worker stores order.ref and shows Ref/Partner on admin Telegram
+- Sales structure unchanged
+- Stats: use Cloudflare Web Analytics on parokh.ir (dashboard, no code required)
+- Telegram bot start=ref_… → separate bot conversation
