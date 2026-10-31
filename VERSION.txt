@@ -1,1 +1,0 @@
-v2.1.1 — chatbot QR fix (load qrcode libs site-wide); affiliate ?ref= on site orders + admin Telegram
