@@ -1,0 +1,5 @@
+v2.1.5 (2026-10-31)
+- Hero: no overflow clip; texts always visible; image max ~46vh under texts
+- guides/settings.html rewritten for EA V9.76 inputs (Group BE, daily risk, 7-day demo)
+- guides/*.html support links fixed (contact→support)
+- User guides FA/EN updated outside zip (artifacts/*.docx)
