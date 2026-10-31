@@ -1,0 +1,6 @@
+v2.1.8 (2026-10-31)
+- Hero image: width auto + max-height (no forced full width stretch)
+- Frame wraps image only (inline-block / fit-content)
+- Desktop max-height ~34vh / 340px; large screens ~36vh / 380px; mobile ~40vh / 300px
+- Slightly tighter title and gaps so buttons stay in first view
+- No other site changes

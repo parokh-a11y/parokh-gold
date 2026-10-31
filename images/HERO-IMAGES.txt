@@ -1,0 +1,8 @@
+Hero images (required)
+======================
+hero-desktop.png  → desktop / tablet landscape (width ≥ 961px)  — height ~541 recommended
+hero-mobile.png   → mobile / narrow screens                     — height ~941 (original)
+
+Put both files in this folder (images/).
+Until you add them, the hero may show a broken image icon.
+Optional fallback: copy your current logo.png to both names.

@@ -1,0 +1,5 @@
+v2.1.8 (2026-10-31)
+- Hero uses <picture>: desktop ≥961px → images/hero-desktop.png
+- Mobile / narrow → images/hero-mobile.png
+- Mobile max-height raised so full-height (~941) art can show larger
+- YOU MUST add both PNG files under images/ before deploy looks correct

@@ -1,0 +1,5 @@
+v2.1.8 (2026-10-31)
+- Hero complete: badge, title, image, subtitle, Demo/Buy buttons always shown
+- Image capped (~38vh desktop) so subtitle+buttons stay in first view
+- Removed inline height:auto that forced oversized image
+- Keeps settings V9.76 + support fixes from 2.1.5
