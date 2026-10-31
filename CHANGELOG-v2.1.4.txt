@@ -1,5 +1,0 @@
-v2.1.6 (2026-10-31)
-- Hero desktop: entire hero fits in first viewport (100dvh); mobile keeps large image
-- support.html canonical + sitemap → support.html (not contact.html)
-- contact.html soft redirect → support.html
-- Demo copy: 7-day trial from first run (aligned with current EA)
